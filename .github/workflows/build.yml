@@ -1,0 +1,32 @@
+name: Build Vue Project
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: true
+
+      - name: Build with Vue Project
+        run: pnpm build
+
+      - name: Upload Dist artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Vue Project
+          path: dist/*
