@@ -8,7 +8,8 @@ const i18n = createI18n({
     messages: {
         zh,
         en
-    }
+    },
+
 })
 
 export default i18n

@@ -11,4 +11,11 @@ const router = createRouter({
     ]
 })
 
+// 导航守卫
+router.beforeEach(to => {
+    console.log(to.path)
+
+    return true
+})
+
 export default router
