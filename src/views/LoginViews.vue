@@ -5,9 +5,11 @@ import type {FormRules} from "element-plus";
 import {useI18n} from "vue-i18n";
 import {User, Lock} from "@element-plus/icons-vue";
 import {userLogin} from "@/service/user";
-
+import {useRoute, useRouter} from "vue-router";
 
 const {t} = useI18n();
+const route = useRoute();
+const router = useRouter();
 
 const isLoading = ref(false)
 const formRef = ref(null)
@@ -35,12 +37,20 @@ const rules = ref<FormRules<RuleForm>>({
 
 const handleLogin = async () => {
   isLoading.value = true
-  await userLogin({
+  const isLogin = await userLogin({
     id: 0,
     username: form.value.username,
     password: form.value.password
-  }, form.value.keep)
+  }, form.value.keep);
   isLoading.value = false
+
+  if (isLogin) {
+    if (route.query.redirect) {
+      router.push({name: route.query.redirect.toString()})
+    } else {
+      router.push({path: '/'})
+    }
+  }
 }
 </script>
 <template>

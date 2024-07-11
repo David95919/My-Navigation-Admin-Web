@@ -1,4 +1,7 @@
 export default {
+    error: {
+        not_login: '未登录'
+    },
     login: {
         login: '登录',
         username: '用户名',

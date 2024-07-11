@@ -1,4 +1,4 @@
-import { createI18n } from 'vue-i18n' //引入vue-i18n组件
+import {createI18n} from 'vue-i18n' //引入vue-i18n组件
 import zh from './zh'  // 中文语言包
 import en from './en'  // 英文语言包
 

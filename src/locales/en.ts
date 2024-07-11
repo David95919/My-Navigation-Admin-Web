@@ -1,4 +1,7 @@
 export default {
+    error: {
+        not_login: 'not signed in'
+    },
     login: {
         login: 'Login',
         username: 'Username',
