@@ -21,6 +21,7 @@ export default {
         user: 'User'
     },
     other: {
+        name: 'Name',
         search: 'Search',
         edit: 'Edit',
         delete: 'Delete'
@@ -28,7 +29,4 @@ export default {
     user: {
         username: 'Username',
     },
-    tag: {
-        name: 'Name'
-    }
 }

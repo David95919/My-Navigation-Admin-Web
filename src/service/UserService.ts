@@ -1,4 +1,4 @@
-import {login, get} from "@/api/user";
+import {login, get} from "@/api/UserApi";
 import {success} from "@/utils/Message"
 import type {User, UserLogin, UserVO} from "@/types/User";
 import type {Result} from "@/types/Result";

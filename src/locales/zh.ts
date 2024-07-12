@@ -21,6 +21,7 @@ export default {
         user: '用户'
     },
     other: {
+        name: '名字',
         search: '搜索',
         edit: '编辑',
         delete: '删除'
@@ -28,7 +29,4 @@ export default {
     user: {
         username: '用户名',
     },
-    tag: {
-        name: '名字'
-    }
 }

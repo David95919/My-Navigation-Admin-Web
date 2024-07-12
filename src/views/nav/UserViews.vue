@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {getUser} from "@/service/user";
+import {getUser} from "@/service/UserService";
 import {ref, computed} from "vue";
 import type {UserVO} from "@/types/User";
 

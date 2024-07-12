@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
-import {getTag} from "@/service/tag";
+import {getTag} from "@/service/TagService";
 import type {Tag} from "@/types/Tag";
 
 const tagList = ref<Tag[]>([]);
@@ -33,7 +33,7 @@ handleGetTag()
     <template #default>
       <el-table :data="filterTableData" border>
         <el-table-column prop="id" label="Id"/>
-        <el-table-column prop="name" :label="$t('tag.name')"/>
+        <el-table-column prop="name" :label="$t('other.name')"/>
         <el-table-column label="Operations">
           <template #header>
             <el-input v-model="search" size="small" :placeholder="$t('other.search')"/>
