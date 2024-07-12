@@ -16,9 +16,36 @@ const router = createRouter({
             component: () => import('@/views/LoginViews.vue')
         },
         {
-            path: '/user',
-            name: 'user',
-            component: () => import('@/views/UserViews.vue')
+            path: '/manage',
+            name: 'manage',
+            component: () => import('@/views/ManageContainer.vue'),
+            children: [
+                {
+                    path: '/home',
+                    name: 'home',
+                    component: () => import('@/views/nav/HomeViews.vue')
+                },
+                {
+                    path: '/navigation',
+                    name: 'navigation',
+                    component: () => import('@/views/nav/NavigationViews.vue')
+                },
+                {
+                    path: '/category',
+                    name: 'category',
+                    component: () => import('@/views/nav/CategoryViews.vue')
+                },
+                {
+                    path: '/tag',
+                    name: 'tag',
+                    component: () => import('@/views/nav/TagViews.vue')
+                },
+                {
+                    path: '/user',
+                    name: 'user',
+                    component: () => import('@/views/nav/UserViews.vue')
+                },
+            ]
         }
     ]
 })

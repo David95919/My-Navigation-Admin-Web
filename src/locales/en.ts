@@ -12,5 +12,18 @@ export default {
             required_password: 'Please enter a password',
             length: 'Length should be 6 to 24',
         }
+    },
+    manage: {
+        home: 'Home',
+        navigation: 'Navigation',
+        category: 'Category',
+        tag: 'Tag',
+        user: 'User'
+    },
+    user: {
+        username: 'Username',
+        search: 'Search',
+        edit: 'Edit',
+        delete: 'Delete'
     }
 }

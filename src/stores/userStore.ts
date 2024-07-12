@@ -11,7 +11,11 @@ export const useUserStore = defineStore('userStore', () => {
 
     const token: Ref<string> = ref('')
 
-    return {user, token}
+    const cleanToken = () => {
+        token.value = '';
+    };
+
+    return {user, token, cleanToken}
 }, {
     persist: {
         paths: ['user', 'token']

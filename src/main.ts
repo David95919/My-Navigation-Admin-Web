@@ -16,5 +16,4 @@ app.use(createPinia().use(piniaPluginPersistedstate))
 app.use(router)
 app.use(i18n)
 
-
 app.mount('#app')

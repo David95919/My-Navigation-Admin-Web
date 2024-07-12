@@ -9,3 +9,8 @@ export type UserLogin = {
     username: string;
     token: string
 }
+
+export type UserVO = {
+    id: number;
+    username: string;
+}

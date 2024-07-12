@@ -12,5 +12,18 @@ export default {
             required_password: '请输入密码',
             length: '长度应为 6 到 24',
         }
+    },
+    manage: {
+        home: '首页',
+        navigation: '导航',
+        category: '分类',
+        tag: '标签',
+        user: '用户'
+    },
+    user: {
+        username: '用户名',
+        search: '搜索',
+        edit: '编辑',
+        delete: '删除'
     }
 }

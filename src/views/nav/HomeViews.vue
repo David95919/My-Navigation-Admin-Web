@@ -1,9 +1,7 @@
 <script setup lang="ts">
 </script>
 <template>
-  <div>
-    UserPage
-  </div>
+  Home
 </template>
 <style scoped>
 </style>
