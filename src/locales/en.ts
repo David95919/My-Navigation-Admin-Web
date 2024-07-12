@@ -20,10 +20,15 @@ export default {
         tag: 'Tag',
         user: 'User'
     },
-    user: {
-        username: 'Username',
+    other: {
         search: 'Search',
         edit: 'Edit',
         delete: 'Delete'
+    },
+    user: {
+        username: 'Username',
+    },
+    tag: {
+        name: 'Name'
     }
 }

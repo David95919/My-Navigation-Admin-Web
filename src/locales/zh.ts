@@ -20,10 +20,15 @@ export default {
         tag: '标签',
         user: '用户'
     },
-    user: {
-        username: '用户名',
+    other: {
         search: '搜索',
         edit: '编辑',
         delete: '删除'
+    },
+    user: {
+        username: '用户名',
+    },
+    tag: {
+        name: '名字'
     }
 }

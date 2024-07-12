@@ -36,11 +36,11 @@ handleGetUser()
         <el-table-column prop="username" :label="$t('user.username')"/>
         <el-table-column label="Operations">
           <template #header>
-            <el-input v-model="search" size="small" :placeholder="$t('user.search')"/>
+            <el-input v-model="search" size="small" :placeholder="$t('other.search')"/>
           </template>
           <template #default="scope">
-            <el-button plain @click="handleEdit(scope.row.id)">{{ $t('user.edit') }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{ $t('user.delete') }}</el-button>
+            <el-button disabled plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
+            <el-button disabled type="danger" plain @click="handleDelete(scope.row.id)">{{ $t('other.delete') }}</el-button>
           </template>
         </el-table-column>
       </el-table>
