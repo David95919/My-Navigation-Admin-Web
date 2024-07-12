@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
-import {getTag} from "@/service/TagService";
+import {getTag, deleteTagById} from "@/service/TagService";
 import type {Tag} from "@/types/Tag";
 
 const tagList = ref<Tag[]>([]);
@@ -16,8 +16,9 @@ const handleGetTag = async () => {
   tagList.value = await getTag()
 }
 
-const handleDelete = (id: number) => {
-  console.log(id)
+const handleDelete = async (id: number) => {
+  await deleteTagById(id);
+  handleGetTag()
 }
 
 const handleEdit = (id: number) => {
@@ -40,7 +41,7 @@ handleGetTag()
           </template>
           <template #default="scope">
             <el-button disabled plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button disabled type="danger" plain @click="handleDelete(scope.row.id)">{{
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
                 $t('other.delete')
               }}
             </el-button>

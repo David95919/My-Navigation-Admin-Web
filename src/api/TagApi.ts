@@ -6,3 +6,6 @@ export async function get() {
     return (await axios.get<Result<Tag[]>>('/tag')).data
 }
 
+export async function deleteById(id: number) {
+    return (await axios.delete<Result<void>>(`/tag/${id}`)).data
+}
