@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
-import {getCategory} from "@/service/CategoryService";
+import {deleteCategoryById, getCategory} from "@/service/CategoryService";
 import type {Category} from "@/types/Category";
 
 const categoryList = ref<Category[]>([]);
@@ -16,8 +16,9 @@ const handleGetCategory = async () => {
   categoryList.value = await getCategory()
 }
 
-const handleDelete = (id: number) => {
-  console.log(id)
+const handleDelete = async (id: number) => {
+  await deleteCategoryById(id)
+  handleGetCategory()
 }
 
 const handleEdit = (id: number) => {
@@ -40,7 +41,7 @@ handleGetCategory()
           </template>
           <template #default="scope">
             <el-button disabled plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button disabled type="danger" plain @click="handleDelete(scope.row.id)">{{
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
                 $t('other.delete')
               }}
             </el-button>
