@@ -36,8 +36,6 @@ watch(() => props.visible, (newValue) => {
 });
 
 const handleConfirm = () => {
-  console.log('handleConfirm')
-
   emits('confirm')
 }
 

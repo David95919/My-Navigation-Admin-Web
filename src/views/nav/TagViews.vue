@@ -4,6 +4,7 @@ import {getTag, deleteTagById, multipleDeleteTag} from "@/service/TagService";
 import type {Tag} from "@/types/Tag";
 import TagDialogComponent from "@/components/tag/TagDialogComponent.vue";
 
+
 const tagDialog = ref<InstanceType<typeof TagDialogComponent> | null>(null)
 const search = ref('')
 const multipleSelection = ref<Tag[]>([]);
@@ -65,10 +66,7 @@ handleGetTag()
           </template>
           <template #default="scope">
             <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
-                $t('other.delete')
-              }}
-            </el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{ $t('other.delete') }}</el-button>
           </template>
         </el-table-column>
       </el-table>

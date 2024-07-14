@@ -19,9 +19,9 @@ export async function update(tag: Tag) {
 }
 
 export async function create(tag: Tag) {
-    return (await axios.post('/tag', tag)).data
+    return (await axios.post<Result<void>>('/tag', tag)).data
 }
 
 export async function multipleDelete(ids: number[]) {
-    return (await axios.delete('/tag/multiple', {data: {ids}})).data
+    return (await axios.delete<Result<void>>('/tag/multiple', {data: {ids}})).data
 }
