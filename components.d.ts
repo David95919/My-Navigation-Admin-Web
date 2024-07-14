@@ -39,6 +39,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TagDialogComponent: typeof import('./src/components/tag/TagDialogComponent.vue')['default']
+    UserDialogComponent: typeof import('./src/components/user/UserDialogComponent.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

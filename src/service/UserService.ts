@@ -1,4 +1,4 @@
-import {login, get, deleteById} from "@/api/UserApi";
+import {login, get, deleteById, create, getById, update} from "@/api/UserApi";
 import {confirmDeletion, success} from "@/utils/Message"
 import type {User, UserLogin, UserVO} from "@/types/User";
 import type {Result} from "@/types/Result";
@@ -39,4 +39,22 @@ export async function deleteUserById(id: number) {
 
         if (result.code === 1) success(result.msg)
     }
+}
+
+export async function createUser(user: User) {
+    const result = await create(user);
+
+    if (result.code === 1) success(result.msg)
+}
+
+export async function getUserById(id: number) {
+    const result = await getById(id);
+
+    return result.data
+}
+
+export async function updateUser(user: User) {
+    const result = await update(user);
+
+    if (result.code === 1) success(result.msg)
 }

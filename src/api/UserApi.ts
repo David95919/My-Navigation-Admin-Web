@@ -18,3 +18,15 @@ export async function get() {
 export async function deleteById(id: number) {
     return (await axios.delete<Result<void>>(`/user/${id}`)).data
 }
+
+export async function create(user: User) {
+    return (await axios.post<Result<void>>('/user', {username: user.username, password: user.password})).data
+}
+
+export async function getById(id: number) {
+    return (await axios.get<Result<User>>(`/user/${id}`)).data
+}
+
+export async function update(user: User) {
+    return (await axios.put<Result<void>>('/user', user)).data
+}

@@ -6,8 +6,6 @@ export default {
     },
     login: {
         login: 'Login',
-        username: 'Username',
-        password: 'Password',
         keep: 'Keep',
         rules: {
             required_username: 'Please enter a username',
@@ -35,5 +33,6 @@ export default {
     },
     user: {
         username: 'Username',
+        password: 'Password',
     },
 }

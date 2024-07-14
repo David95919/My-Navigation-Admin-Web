@@ -4,8 +4,6 @@ export default {
     },
     login: {
         login: '登录',
-        username: '用户名',
-        password: '密码',
         keep: '保持登录',
         rules: {
             required_username: '请输入用户名',
@@ -33,5 +31,6 @@ export default {
     },
     user: {
         username: '用户名',
+        password: '密码',
     },
 }

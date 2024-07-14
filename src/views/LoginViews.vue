@@ -61,10 +61,10 @@ const handleLogin = async () => {
         <span class="title">{{ $t(`login.login`) }}</span>
       </template>
       <el-form :model="form" :rules="rules" label-width="auto" ref="formRef">
-        <el-form-item :label="$t(`login.username`)" prop="username">
+        <el-form-item :label="$t(`user.username`)" prop="username">
           <el-input v-model="form.username" :prefix-icon="User"></el-input>
         </el-form-item>
-        <el-form-item :label="$t(`login.password`)" prop="password">
+        <el-form-item :label="$t(`user.password`)" prop="password">
           <el-input v-model="form.password" :prefix-icon="Lock" type="password" show-password></el-input>
         </el-form-item>
         <el-form-item :label="$t(`login.keep`)">
