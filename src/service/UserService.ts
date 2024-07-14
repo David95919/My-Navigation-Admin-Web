@@ -1,5 +1,5 @@
-import {login, get} from "@/api/UserApi";
-import {success} from "@/utils/Message"
+import {login, get, deleteById} from "@/api/UserApi";
+import {confirmDeletion, success} from "@/utils/Message"
 import type {User, UserLogin, UserVO} from "@/types/User";
 import type {Result} from "@/types/Result";
 import {storeToRefs} from "pinia";
@@ -30,4 +30,13 @@ export async function getUser(): Promise<UserVO[]> {
     if (result.code === 0) return []
 
     return result.data
+}
+
+export async function deleteUserById(id: number) {
+    const isConfirm = await confirmDeletion();
+    if (isConfirm) {
+        const result = await deleteById(id);
+
+        if (result.code === 1) success(result.msg)
+    }
 }

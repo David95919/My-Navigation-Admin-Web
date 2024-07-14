@@ -14,3 +14,7 @@ export async function login(user: User) {
 export async function get() {
     return (await axios.get<Result<UserVO[]>>('/user')).data
 }
+
+export async function deleteById(id: number) {
+    return (await axios.delete<Result<void>>(`/user/${id}`)).data
+}

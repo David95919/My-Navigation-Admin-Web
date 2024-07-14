@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {getUser} from "@/service/UserService";
+import {deleteUserById, getUser} from "@/service/UserService";
 import {ref, computed} from "vue";
 import type {UserVO} from "@/types/User";
 
@@ -15,8 +15,9 @@ const search = ref('')
 const handleGetUser = async () => {
   userList.value = await getUser()
 }
-const handleDelete = (id: number) => {
-  console.log(id)
+const handleDelete = async (id: number) => {
+  await deleteUserById(id)
+  handleGetUser()
 }
 
 const handleEdit = (id: number) => {
@@ -40,7 +41,7 @@ handleGetUser()
           </template>
           <template #default="scope">
             <el-button disabled plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button disabled type="danger" plain @click="handleDelete(scope.row.id)">{{ $t('other.delete') }}</el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{ $t('other.delete') }}</el-button>
           </template>
         </el-table-column>
       </el-table>
