@@ -28,6 +28,8 @@ export default {
         delete: '删除',
         cancel: '取消',
         confirm: '确认',
+        confirm_delete: '确认删除?',
+        warning: '警告'
     },
     user: {
         username: '用户名',

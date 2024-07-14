@@ -1,5 +1,5 @@
 import {deleteById, get, create, getById, multipleDelete, update} from "@/api/CategoryApi";
-import {success} from "@/utils/Message";
+import {confirmDeletion, success} from "@/utils/Message";
 import type {Category} from "@/types/Category";
 
 export async function getCategory() {
@@ -11,9 +11,12 @@ export async function getCategory() {
 }
 
 export async function deleteCategoryById(id: number) {
-    const result = await deleteById(id);
+    const isConfirm = await confirmDeletion();
+    if (isConfirm) {
+        const result = await deleteById(id);
 
-    if (result.code === 1) success(result.msg)
+        if (result.code === 1) success(result.msg)
+    }
 }
 
 export async function getCategoryById(id: number) {
@@ -35,10 +38,13 @@ export async function createCategory(category: Category) {
 }
 
 export async function multipleDeleteCategory(category: Category[]) {
-    const ids: number[] = []
-    category.forEach(item => ids.push(item.id))
+    const isConfirm = await confirmDeletion();
+    if (isConfirm) {
+        const ids: number[] = []
+        category.forEach(item => ids.push(item.id))
 
-    const result = await multipleDelete(ids)
+        const result = await multipleDelete(ids)
 
-    if (result.code === 1) success(result.msg)
+        if (result.code === 1) success(result.msg)
+    }
 }

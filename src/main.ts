@@ -1,6 +1,7 @@
 import './assets/main.css'
 import 'element-plus/theme-chalk/dark/css-vars.css';
 import 'element-plus/theme-chalk/src/message.scss';
+import 'element-plus/theme-chalk/src/message-box.scss';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import {createApp} from 'vue'

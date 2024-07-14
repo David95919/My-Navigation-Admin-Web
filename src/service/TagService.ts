@@ -1,5 +1,5 @@
 import {get, deleteById, getById, update, create, multipleDelete} from "@/api/TagApi";
-import {success, error} from "@/utils/Message";
+import {success, error, confirmDeletion} from "@/utils/Message";
 import type {Tag} from "@/types/Tag";
 
 export async function getTag() {
@@ -20,9 +20,12 @@ export async function getTagById(id: number) {
 }
 
 export async function deleteTagById(id: number) {
-    const result = await deleteById(id);
+    const isConfirm = await confirmDeletion();
+    if (isConfirm) {
+        const result = await deleteById(id);
 
-    if (result.code === 1) success(result.msg)
+        if (result.code === 1) success(result.msg)
+    }
 }
 
 export async function updateTag(tag: Tag) {
@@ -38,10 +41,13 @@ export async function createTag(tag: Tag) {
 }
 
 export async function multipleDeleteTag(tags: Tag[]) {
-    const ids: number[] = []
-    tags.forEach(item => ids.push(item.id))
+    const isConfirm = await confirmDeletion();
+    if (isConfirm) {
+        const ids: number[] = []
+        tags.forEach(item => ids.push(item.id))
 
-    const result = await multipleDelete(ids)
+        const result = await multipleDelete(ids)
 
-    if (result.code === 1) success(result.msg)
+        if (result.code === 1) success(result.msg)
+    }
 }

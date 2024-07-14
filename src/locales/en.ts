@@ -1,3 +1,5 @@
+import {warning} from "@/utils/Message";
+
 export default {
     error: {
         not_login: 'not signed in'
@@ -28,6 +30,8 @@ export default {
         delete: 'Delete',
         cancel: 'Cancel',
         confirm: 'Confirm',
+        confirm_delete: 'Confirm delete?',
+        warning: 'warning'
     },
     user: {
         username: 'Username',
