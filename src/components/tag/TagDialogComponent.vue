@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DialogComponent from "@/components/DialogComponent.vue";
 import {ref} from "vue";
-import {getTagById, updateTag} from "@/service/TagService";
+import {createTag, getTagById, updateTag} from "@/service/TagService";
 
 const emits = defineEmits<{
   confirm: [],
@@ -27,13 +27,12 @@ const open = async (id?: number) => {
 
 const confirm = async () => {
   if (isAdd.value) {
-    console.log('Add')
+    await createTag({id: 0, name: form.value.name})
   } else {
     await updateTag({id: editId.value, name: form.value.name});
-    dialogVisible.value = false
-    emits('confirm')
   }
 
+  dialogVisible.value = false
   emits('confirm')
 }
 

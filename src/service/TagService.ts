@@ -1,4 +1,4 @@
-import {get, deleteById, getById, update} from "@/api/TagApi";
+import {get, deleteById, getById, update, create} from "@/api/TagApi";
 import {success, error} from "@/utils/Message";
 import type {Tag} from "@/types/Tag";
 
@@ -29,6 +29,13 @@ export async function deleteTagById(id: number) {
 
 export async function updateTag(tag: Tag) {
     const result = await update(tag);
+
+    if (result.code === 0) error(result.msg)
+    if (result.code === 1) success(result.msg)
+}
+
+export async function createTag(tag: Tag) {
+    const result = await create(tag);
 
     if (result.code === 0) error(result.msg)
     if (result.code === 1) success(result.msg)

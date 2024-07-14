@@ -17,3 +17,7 @@ export async function getById(id: number) {
 export async function update(tag: Tag) {
     return (await axios.put<Result<void>>('/tag', tag)).data
 }
+
+export async function create(tag: Tag) {
+    return (await axios.post('/tag', tag)).data
+}
