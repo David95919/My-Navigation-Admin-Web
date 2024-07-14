@@ -7,11 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AddDialogComponent: typeof import('./src/components/AddDialogComponent.vue')['default']
     DarkComponent: typeof import('./src/components/DarkComponent.vue')['default']
+    DialogComponent: typeof import('./src/components/DialogComponent.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
@@ -34,6 +37,7 @@ declare module 'vue' {
     IMaterialSymbolsUserAttributesOutlineRounded: typeof import('~icons/material-symbols/user-attributes-outline-rounded')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TagDialogComponent: typeof import('./src/components/tag/TagDialogComponent.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

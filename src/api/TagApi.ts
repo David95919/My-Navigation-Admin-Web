@@ -9,3 +9,11 @@ export async function get() {
 export async function deleteById(id: number) {
     return (await axios.delete<Result<void>>(`/tag/${id}`)).data
 }
+
+export async function getById(id: number) {
+    return (await axios.get<Result<Tag>>(`/tag/${id}`)).data
+}
+
+export async function update(tag: Tag) {
+    return (await axios.put<Result<void>>('/tag', tag)).data
+}

@@ -2,7 +2,10 @@
 import {computed, ref} from "vue";
 import {getTag, deleteTagById} from "@/service/TagService";
 import type {Tag} from "@/types/Tag";
+import TagDialogComponent from "@/components/tag/TagDialogComponent.vue";
 
+const tagDialog = ref<InstanceType<typeof TagDialogComponent> | null>(null)
+const search = ref('')
 const tagList = ref<Tag[]>([]);
 const filterTableData = computed(() =>
     tagList.value.filter((data) =>
@@ -10,7 +13,6 @@ const filterTableData = computed(() =>
         data.name.toLowerCase().includes(search.value.toLowerCase())
     )
 )
-const search = ref('')
 
 const handleGetTag = async () => {
   tagList.value = await getTag()
@@ -22,14 +24,25 @@ const handleDelete = async (id: number) => {
 }
 
 const handleEdit = (id: number) => {
-  console.log(id)
+  tagDialog.value?.open(id)
 }
+
+const handleAdd = () => {
+  tagDialog.value?.open()
+}
+
 handleGetTag()
 </script>
 <template>
   <el-card class="card" shadow="always">
     <template #header>
-      <div class="title">{{ $t('manage.tag') }}</div>
+      <div class="header">
+        <div class="title">{{ $t('manage.tag') }}</div>
+        <div>
+          <el-button plain @click="handleAdd">Add</el-button>
+          <el-button type="danger" plain>Delete</el-button>
+        </div>
+      </div>
     </template>
     <template #default>
       <el-table :data="filterTableData" border>
@@ -40,7 +53,7 @@ handleGetTag()
             <el-input v-model="search" size="small" :placeholder="$t('other.search')"/>
           </template>
           <template #default="scope">
-            <el-button disabled plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
+            <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
             <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
                 $t('other.delete')
               }}
@@ -50,11 +63,17 @@ handleGetTag()
       </el-table>
     </template>
   </el-card>
+  <TagDialogComponent ref="tagDialog" @confirm="handleGetTag"></TagDialogComponent>
 </template>
 <style scoped>
 .card {
   .title {
     font-size: 1.25em;
   }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
