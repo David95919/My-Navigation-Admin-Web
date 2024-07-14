@@ -23,8 +23,11 @@ export default {
     other: {
         name: 'Name',
         search: 'Search',
+        add: 'Add',
         edit: 'Edit',
-        delete: 'Delete'
+        delete: 'Delete',
+        cancel: 'Cancel',
+        confirm: 'Confirm',
     },
     user: {
         username: 'Username',

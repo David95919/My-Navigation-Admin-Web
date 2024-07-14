@@ -7,10 +7,8 @@
     </template>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="close">Cancel</el-button>
-        <el-button type="primary" @click="handleConfirm">
-          Confirm
-        </el-button>
+        <el-button @click="close">{{ $t('other.cancel') }}</el-button>
+        <el-button type="primary" @click="handleConfirm"> {{ $t('other.confirm') }}</el-button>
       </div>
     </template>
   </el-dialog>
@@ -43,7 +41,7 @@ const handleConfirm = () => {
   emits('confirm')
 }
 
-const close = ()=>{
+const close = () => {
   handleVisible(false)
 }
 </script>

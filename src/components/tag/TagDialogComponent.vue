@@ -41,9 +41,9 @@ defineExpose({
 })
 </script>
 <template>
-  <DialogComponent v-model:visible="dialogVisible" :title="isAdd ? 'AddTag':'EditTag' " @confirm="confirm">
+  <DialogComponent v-model:visible="dialogVisible" :title="isAdd ? $t('other.add'):$t('other.edit') " @confirm="confirm">
     <el-form :model="form">
-      <el-form-item label="Name">
+      <el-form-item :label="$t('other.name')">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
     </el-form>

@@ -23,8 +23,11 @@ export default {
     other: {
         name: '名字',
         search: '搜索',
+        add: '添加',
         edit: '编辑',
-        delete: '删除'
+        delete: '删除',
+        cancel: '取消',
+        confirm: '确认',
     },
     user: {
         username: '用户名',

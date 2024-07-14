@@ -24,7 +24,7 @@ const handleDelete = async (id: number) => {
   handleGetTag()
 }
 
-const handleeMultipleDelete = async () => {
+const handleMultipleDelete = async () => {
   await multipleDeleteTag(multipleSelection.value)
   handleGetTag()
 }
@@ -49,8 +49,8 @@ handleGetTag()
       <div class="header">
         <div class="title">{{ $t('manage.tag') }}</div>
         <div>
-          <el-button plain @click="handleAdd">Add</el-button>
-          <el-button type="danger" plain @click="handleeMultipleDelete">Delete</el-button>
+          <el-button plain @click="handleAdd">{{ $t('other.add') }}</el-button>
+          <el-button type="danger" plain @click="handleMultipleDelete">{{ $t('other.delete') }}</el-button>
         </div>
       </div>
     </template>
