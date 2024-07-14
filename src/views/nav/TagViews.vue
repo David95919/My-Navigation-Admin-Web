@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
-import {getTag, deleteTagById} from "@/service/TagService";
+import {getTag, deleteTagById, multipleDeleteTag} from "@/service/TagService";
 import type {Tag} from "@/types/Tag";
 import TagDialogComponent from "@/components/tag/TagDialogComponent.vue";
 
 const tagDialog = ref<InstanceType<typeof TagDialogComponent> | null>(null)
 const search = ref('')
+const multipleSelection = ref<Tag[]>([]);
 const tagList = ref<Tag[]>([]);
 const filterTableData = computed(() =>
     tagList.value.filter((data) =>
@@ -23,12 +24,21 @@ const handleDelete = async (id: number) => {
   handleGetTag()
 }
 
+const handleeMultipleDelete = async () => {
+  await multipleDeleteTag(multipleSelection.value)
+  handleGetTag()
+}
+
 const handleEdit = (id: number) => {
   tagDialog.value?.open(id)
 }
 
 const handleAdd = () => {
   tagDialog.value?.open()
+}
+
+const handleSelectionChange = (value: Tag[]) => {
+  multipleSelection.value = value
 }
 
 handleGetTag()
@@ -40,12 +50,13 @@ handleGetTag()
         <div class="title">{{ $t('manage.tag') }}</div>
         <div>
           <el-button plain @click="handleAdd">Add</el-button>
-          <el-button type="danger" plain>Delete</el-button>
+          <el-button type="danger" plain @click="handleeMultipleDelete">Delete</el-button>
         </div>
       </div>
     </template>
     <template #default>
-      <el-table :data="filterTableData" border>
+      <el-table :data="filterTableData" border @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="id" label="Id"/>
         <el-table-column prop="name" :label="$t('other.name')"/>
         <el-table-column label="Operations">
