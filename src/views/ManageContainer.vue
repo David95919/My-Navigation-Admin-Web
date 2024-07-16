@@ -46,10 +46,11 @@ const route = useRoute();
         <div class="title">My-Navigation-Admin</div>
       </el-card>
       <div class="main">
-        <router-view></router-view>
+        <el-scrollbar height="89vh">
+          <router-view></router-view>
+        </el-scrollbar>
       </div>
     </div>
-
   </el-container>
 </template>
 <style scoped lang="less">
@@ -71,6 +72,7 @@ const route = useRoute();
 
   .container {
     width: 100%;
+
     .header {
       margin: 10px;
 
