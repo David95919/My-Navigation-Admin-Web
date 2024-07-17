@@ -24,6 +24,7 @@ export default {
         name: 'Name',
         search: 'Search',
         query: 'Query',
+        clear: 'Clear',
         add: 'Add',
         edit: 'Edit',
         delete: 'Delete',

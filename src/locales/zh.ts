@@ -22,6 +22,7 @@ export default {
         name: '名字',
         search: '搜索',
         query: '查询',
+        clear: '清除',
         add: '添加',
         edit: '编辑',
         delete: '删除',
