@@ -41,5 +41,9 @@ export default {
     },
     category: {
         add_prompt: '添加分类'
+    },
+    nav:{
+        url:'网址',
+        description:'描述',
     }
 }

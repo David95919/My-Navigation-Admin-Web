@@ -72,23 +72,23 @@ handleQuery()
     <template #default>
       <el-table :data="filterTableData" border>
         <el-table-column prop="id" label="id"></el-table-column>
-        <el-table-column prop="name" label="name"></el-table-column>
-        <el-table-column prop="url" label="url">
+        <el-table-column prop="name" :label="$t('other.name')"></el-table-column>
+        <el-table-column prop="url" :label="$t('nav.url')">
           <template #default="scope">
             <el-link :href="scope.row.url" target="_blank">{{ scope.row.url }}</el-link>
           </template>
         </el-table-column>
-        <el-table-column prop="description" label="description">
+        <el-table-column prop="description" :label="$t('nav.description')">
           <template #default="scope">
             <div class="description">{{ scope.row.description }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="tags" label="tags">
+        <el-table-column prop="tags" :label="$t('manage.tag')">
           <template #default="scope">
             <el-tag v-for="tag in scope.row.tags" :key="tag.id"> {{ tag.name }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="category" label="category">
+        <el-table-column prop="category" :label="$t('manage.category')">
           <template #default="scope">
             <el-tag> {{ scope.row.category.name }}</el-tag>
           </template>

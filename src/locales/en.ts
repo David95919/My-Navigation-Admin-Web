@@ -43,5 +43,9 @@ export default {
     },
     category: {
         add_prompt: 'Add an category'
+    },
+    nav:{
+        url:'Url',
+        description:'Description',
     }
 }
