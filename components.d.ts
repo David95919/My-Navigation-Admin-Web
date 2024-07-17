@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AddDialogComponent: typeof import('./src/components/AddDialogComponent.vue')['default']
     CategoryDialogComponent: typeof import('./src/components/category/CategoryDialogComponent.vue')['default']
     DarkComponent: typeof import('./src/components/DarkComponent.vue')['default']
     DialogComponent: typeof import('./src/components/DialogComponent.vue')['default']
@@ -15,15 +14,11 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElContainer: typeof import('element-plus/es')['ElContainer']
-    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElDialog: typeof import('element-plus/es')['ElDialog']
-    ElFooter: typeof import('element-plus/es')['ElFooter']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
-    ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
-    ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
@@ -31,10 +26,7 @@ declare module 'vue' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    IMaterialSymbolsAssistantNavigation: typeof import('~icons/material-symbols/assistant-navigation')['default']
-    IMaterialSymbolsAssistantNavigationOutline: typeof import('~icons/material-symbols/assistant-navigation-outline')['default']
     IMaterialSymbolsAssistantNavigationOutlineRounded: typeof import('~icons/material-symbols/assistant-navigation-outline-rounded')['default']
-    IMaterialSymbolsCategoryOutline: typeof import('~icons/material-symbols/category-outline')['default']
     IMaterialSymbolsCategoryOutlineRounded: typeof import('~icons/material-symbols/category-outline-rounded')['default']
     IMaterialSymbolsHomeOutlineRounded: typeof import('~icons/material-symbols/home-outline-rounded')['default']
     IMaterialSymbolsTagRounded: typeof import('~icons/material-symbols/tag-rounded')['default']
@@ -42,6 +34,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TagDialogComponent: typeof import('./src/components/tag/TagDialogComponent.vue')['default']
+    TagSelect: typeof import('./src/components/tag/TagSelect.vue')['default']
     UserDialogComponent: typeof import('./src/components/user/UserDialogComponent.vue')['default']
   }
   export interface ComponentCustomProperties {

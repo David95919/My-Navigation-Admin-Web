@@ -9,6 +9,9 @@
     }
   ],
   "compilerOptions": {
-    "types": ["vite/client", "./auto-imports.d.ts"],
+    "types": [
+      "vite/client",
+      "./auto-imports.d.ts"
+    ]
   }
 }
