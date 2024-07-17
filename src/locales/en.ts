@@ -23,16 +23,24 @@ export default {
     other: {
         name: 'Name',
         search: 'Search',
+        query: 'Query',
         add: 'Add',
         edit: 'Edit',
         delete: 'Delete',
         cancel: 'Cancel',
         confirm: 'Confirm',
         confirm_delete: 'Confirm delete?',
-        warning: 'warning'
+        warning: 'warning',
+        select: 'Select',
     },
     user: {
         username: 'Username',
         password: 'Password',
     },
+    tag: {
+        add_prompt: 'Add an tag'
+    },
+    category: {
+        add_prompt: 'Add an category'
+    }
 }

@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     CategoryDialogComponent: typeof import('./src/components/category/CategoryDialogComponent.vue')['default']
+    CategorySelect: typeof import('./src/components/category/CategorySelect.vue')['default']
     DarkComponent: typeof import('./src/components/DarkComponent.vue')['default']
     DialogComponent: typeof import('./src/components/DialogComponent.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
@@ -21,6 +22,7 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElOption: typeof import('element-plus/es')['ElOption']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']

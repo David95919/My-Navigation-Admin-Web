@@ -1,41 +1,41 @@
 <script setup lang="ts">
 import {ref} from "vue";
-import {createTag, getTag} from "@/service/TagService";
-import type {Tag} from "@/types/Tag";
+import type {Category} from "@/types/Category";
+import {createCategory, getCategory} from "@/service/CategoryService";
 
 const props = defineProps<{
   default?: number
 }>();
 
 const selectValue = ref(props.default)
-const tags = ref<Tag[]>([])
+const categorys = ref<Category[]>([])
 const isAdd = ref(false)
-const tagInput = ref('')
+const categoryInput = ref('')
 
-const handleGetTag = async () => {
-  tags.value = await getTag();
+const handleGetCategory = async () => {
+  categorys.value = await getCategory();
 }
 
 const handleConfirm = async () => {
   isAdd.value = false
-  await createTag({id: 0, name: tagInput.value})
-  handleGetTag()
+  await createCategory({id: 0, name: categoryInput.value})
+  handleGetCategory()
 }
 
 const handleCancel = () => {
   isAdd.value = false
-  tagInput.value = ''
+  categoryInput.value = ''
 }
 
-handleGetTag()
+handleGetCategory()
 </script>
 <template>
   <el-select v-model="selectValue" filterable :placeholder=" $t('other.select')" style="width: 5vw">
-    <el-option v-for="tag in tags" :key="tag.id" :value="tag.id" :label="tag.name"></el-option>
+    <el-option v-for="category in categorys" :key="category.id" :value="category.id" :label="category.name"></el-option>
     <template #footer>
-      <el-button v-if="!isAdd" size="small" @click="isAdd=true">{{ $t('tag.add_prompt') }}</el-button>
+      <el-button v-if="!isAdd" size="small" @click="isAdd=true">{{ $t('category.add_prompt') }}</el-button>
       <template v-else>
-        <el-input size="small" v-model="tagInput" style="width: 5vw;"></el-input>
+        <el-input size="small" v-model="categoryInput" style="width: 5vw;"></el-input>
         <el-button type="primary" size="small" @click="handleConfirm">{{ $t('other.confirm') }}</el-button>
         <el-button size="small" @click="handleCancel">{{ $t('other.cancel') }}</el-button>
       </template>

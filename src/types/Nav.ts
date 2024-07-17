@@ -3,8 +3,8 @@ import type {Category} from "@/types/Category";
 
 export type NavQueryConfig = {
     name?: string,
-    category?: number,
-    tag?: number
+    category?: number | null,
+    tag?: number | null
 }
 
 export type Nav = {

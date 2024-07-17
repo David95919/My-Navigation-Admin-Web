@@ -21,16 +21,24 @@ export default {
     other: {
         name: '名字',
         search: '搜索',
+        query: '查询',
         add: '添加',
         edit: '编辑',
         delete: '删除',
         cancel: '取消',
         confirm: '确认',
         confirm_delete: '确认删除?',
-        warning: '警告'
+        warning: '警告',
+        select: '选择',
     },
     user: {
         username: '用户名',
         password: '密码',
     },
+    tag: {
+        add_prompt: '添加标签'
+    },
+    category: {
+        add_prompt: '添加分类'
+    }
 }
