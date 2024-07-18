@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import DarkComponent from '@/components/DarkComponent.vue'
 import { ref } from 'vue'
 import type { FormRules } from 'element-plus'
 import { useI18n } from 'vue-i18n'
@@ -58,7 +57,6 @@ const handleLogin = async () => {
 </script>
 <template>
   <div class="main">
-    <DarkComponent></DarkComponent>
     <el-card class="central" v-loading="isLoading">
       <template #header>
         <span class="title">{{ $t(`login.login`) }}</span>

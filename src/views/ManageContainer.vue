@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import SettingsDialogComponent from '@/components/SettingsDialogComponent.vue'
+import { ref } from 'vue'
 
 const route = useRoute()
+const settingsDialog = ref<InstanceType<typeof SettingsDialogComponent> | null>(null)
+
+const handleOpenSettings = () => {
+  settingsDialog.value?.open()
+}
 </script>
 <template>
   <el-container class="common-layout">
@@ -38,6 +45,12 @@ const route = useRoute()
             </el-icon>
             <span>{{ $t('manage.user') }}</span>
           </el-menu-item>
+          <el-menu-item @click="handleOpenSettings">
+            <el-icon>
+              <i-material-symbols-settings />
+            </el-icon>
+            <span>{{ $t('manage.settings') }}</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
     </el-card>
@@ -52,6 +65,7 @@ const route = useRoute()
       </div>
     </div>
   </el-container>
+  <SettingsDialogComponent ref="settingsDialog"></SettingsDialogComponent>
 </template>
 <style scoped lang="less">
 .common-layout {

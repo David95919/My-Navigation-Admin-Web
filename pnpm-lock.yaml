@@ -39,6 +39,9 @@ importers:
       '@iconify-json/material-symbols':
         specifier: ^1.1.83
         version: 1.1.83
+      '@iconify-json/material-symbols-light':
+        specifier: ^1.1.25
+        version: 1.1.25
       '@rushstack/eslint-patch':
         specifier: ^1.8.0
         version: 1.10.3
@@ -311,6 +314,9 @@ packages:
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
+
+  '@iconify-json/material-symbols-light@1.1.25':
+    resolution: {integrity: sha512-Ld+biDaXRY1Yrko0BtzGkidwt2MsNFyaql9Mpkfl2wfUfbK0/CCrJCMclRz5+VtGHWkfd5iv1EYqEvceLK805A==}
 
   '@iconify-json/material-symbols@1.1.83':
     resolution: {integrity: sha512-CBO1pPp6YRzqkM8XwRmWY9Vi19wYpkl7lS8XhLDUssDnjQaaYbmE4O1SWCBr1AVn1x48qmCWXLk4HKWLvvQpvA==}
@@ -1760,6 +1766,10 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.3': {}
+
+  '@iconify-json/material-symbols-light@1.1.25':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify-json/material-symbols@1.1.83':
     dependencies:

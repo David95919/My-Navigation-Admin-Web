@@ -18,7 +18,8 @@ export default {
     navigation: 'Navigation',
     category: 'Category',
     tag: 'Tag',
-    user: 'User'
+    user: 'User',
+    settings: 'Settings'
   },
   other: {
     name: 'Name',
@@ -47,5 +48,9 @@ export default {
   nav: {
     url: 'Url',
     description: 'Description'
+  },
+  settings: {
+    dark: 'DarkMod',
+    glass: 'Glass background'
   }
 }

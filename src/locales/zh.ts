@@ -16,7 +16,8 @@ export default {
     navigation: '导航',
     category: '分类',
     tag: '标签',
-    user: '用户'
+    user: '用户',
+    settings: '设置'
   },
   other: {
     name: '名字',
@@ -45,5 +46,9 @@ export default {
   nav: {
     url: '网址',
     description: '描述'
+  },
+  settings: {
+    dark: '黑暗模式',
+    glass: '透明背景'
   }
 }
