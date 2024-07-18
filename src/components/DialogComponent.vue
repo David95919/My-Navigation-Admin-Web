@@ -1,5 +1,12 @@
 <template>
-  <el-dialog v-model="localVisible" width="30vw" draggable align-center :title="title" @closed="close">
+  <el-dialog
+    v-model="localVisible"
+    width="30vw"
+    draggable
+    align-center
+    :title="title"
+    @closed="close"
+  >
     <template #default>
       <div class="dialog-boyd">
         <slot></slot>
@@ -14,26 +21,29 @@
   </el-dialog>
 </template>
 <script setup lang="ts">
-import {ref, watch} from "vue";
+import { ref, watch } from 'vue'
 
 const props = defineProps<{
-  visible: boolean,
+  visible: boolean
   title: string
-}>();
+}>()
 
 const emits = defineEmits<{
-  'update:visible': [value: boolean],
-  'confirm': [],
-}>();
+  'update:visible': [value: boolean]
+  confirm: []
+}>()
 
 const localVisible = ref(props.visible)
 const handleVisible = (newValue: boolean) => {
   localVisible.value = newValue
   emits('update:visible', newValue)
 }
-watch(() => props.visible, (newValue) => {
-  localVisible.value = newValue;
-});
+watch(
+  () => props.visible,
+  (newValue) => {
+    localVisible.value = newValue
+  }
+)
 
 const handleConfirm = () => {
   emits('confirm')

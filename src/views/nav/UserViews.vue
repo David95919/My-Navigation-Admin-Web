@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import {deleteUserById, getUser} from "@/service/UserService";
-import {ref, computed} from "vue";
-import type {UserVO} from "@/types/User";
-import type UserDialogComponent from "@/components/user/UserDialogComponent.vue";
+import { deleteUserById, getUser } from '@/service/UserService'
+import { ref, computed } from 'vue'
+import type { UserVO } from '@/types/User'
+import type UserDialogComponent from '@/components/user/UserDialogComponent.vue'
 
 const userDialog = ref<InstanceType<typeof UserDialogComponent> | null>(null)
-const userList = ref<UserVO[]>([]);
+const userList = ref<UserVO[]>([])
 const search = ref('')
 const filterTableData = computed(() =>
-    userList.value.filter((data) =>
-        !search.value ||
-        data.username.toLowerCase().includes(search.value.toLowerCase())
-    )
+  userList.value.filter(
+    (data) => !search.value || data.username.toLowerCase().includes(search.value.toLowerCase())
+  )
 )
 
 const handleGetUser = async () => {
@@ -45,15 +44,17 @@ handleGetUser()
     </template>
     <template #default>
       <el-table :data="filterTableData" border>
-        <el-table-column prop="id" label="Id"/>
-        <el-table-column prop="username" :label="$t('user.username')"/>
+        <el-table-column prop="id" label="Id" />
+        <el-table-column prop="username" :label="$t('user.username')" />
         <el-table-column label="Operations">
           <template #header>
-            <el-input v-model="search" size="small" :placeholder="$t('other.search')"/>
+            <el-input v-model="search" size="small" :placeholder="$t('other.search')" />
           </template>
           <template #default="scope">
             <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{ $t('other.delete') }}</el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
+              $t('other.delete')
+            }}</el-button>
           </template>
         </el-table-column>
       </el-table>

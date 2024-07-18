@@ -1,23 +1,27 @@
-import {ref, type Ref} from 'vue'
-import {defineStore} from 'pinia'
-import type {User} from "@/types/User";
+import { ref, type Ref } from 'vue'
+import { defineStore } from 'pinia'
+import type { User } from '@/types/User'
 
-export const useUserStore = defineStore('userStore', () => {
+export const useUserStore = defineStore(
+  'userStore',
+  () => {
     const user = ref<User>({
-        id: 0,
-        username: '',
-        password: ''
+      id: 0,
+      username: '',
+      password: ''
     })
 
     const token: Ref<string> = ref('')
 
     const cleanToken = () => {
-        token.value = '';
-    };
+      token.value = ''
+    }
 
-    return {user, token, cleanToken}
-}, {
+    return { user, token, cleanToken }
+  },
+  {
     persist: {
-        paths: ['user', 'token']
-    },
-})
+      paths: ['user', 'token']
+    }
+  }
+)

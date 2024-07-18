@@ -1,40 +1,44 @@
 <script setup lang="ts">
-import type {Nav, NavQueryConfig} from "@/types/Nav";
-import {computed, ref} from "vue";
-import TagSelect from "@/components/tag/TagSelect.vue";
-import CategorySelect from "@/components/category/CategorySelect.vue";
-import {getNav} from "@/service/NavService";
-import {deleteById} from "@/api/NavApi";
+import type { Nav, NavQueryConfig } from '@/types/Nav'
+import { computed, ref } from 'vue'
+import TagSelect from '@/components/tag/TagSelect.vue'
+import CategorySelect from '@/components/category/CategorySelect.vue'
+import { getNav } from '@/service/NavService'
+import { deleteById } from '@/api/NavApi'
 
-const queryConfig = ref<NavQueryConfig>({name: '', category: null, tag: null})
+const queryConfig = ref<NavQueryConfig>({
+  name: '',
+  category: null,
+  tag: null,
+  current: 1,
+  size: 10
+})
 const navList = ref<Nav[]>([])
 const filterTableData = computed(() =>
-    navList.value.filter((data) =>
-        !search.value ||
-        data.name.toLowerCase().includes(search.value.toLowerCase())
-    )
+  navList.value.filter(
+    (data) => !search.value || data.name.toLowerCase().includes(search.value.toLowerCase())
+  )
 )
 const search = ref('')
-
-const handleAdd = () => {
-
-}
-
-const handleMultipleDelete = () => {
-
-}
+const total = ref(1110)
 
 const handleQuery = async () => {
-  navList.value = await getNav(queryConfig.value);
+  const page = await getNav(queryConfig.value)
+  navList.value = page.records
+  total.value = page.total
 }
 
 const handleClear = async () => {
-  queryConfig.value = {name: '', category: null, tag: null}
+  queryConfig.value.name = ''
+  queryConfig.value.category = null
+  queryConfig.value.tag = null
 }
 
-const handleEdit = (id: number) => {
+const handleEdit = (id: number) => {}
 
-}
+const handleAdd = () => {}
+
+const handleMultipleDelete = () => {}
 
 const handleDelete = async (id: number) => {
   await deleteById(id)
@@ -65,7 +69,9 @@ handleQuery()
             </el-form-item>
           </el-form>
           <el-button disabled plain @click="handleAdd">{{ $t('other.add') }}</el-button>
-          <el-button disabled plain type="danger" @click="handleMultipleDelete">{{ $t('other.delete') }}</el-button>
+          <el-button disabled plain type="danger" @click="handleMultipleDelete">{{
+            $t('other.delete')
+          }}</el-button>
         </div>
       </div>
     </template>
@@ -95,17 +101,28 @@ handleQuery()
         </el-table-column>
         <el-table-column label="Operations">
           <template #header>
-            <el-input v-model="search" size="small" :placeholder="$t('other.search')"/>
+            <el-input v-model="search" size="small" :placeholder="$t('other.search')" />
           </template>
           <template #default="scope">
-            <el-button disabled plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{ $t('other.delete') }}</el-button>
+            <el-button disabled plain @click="handleEdit(scope.row.id)">{{
+              $t('other.edit')
+            }}</el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
+              $t('other.delete')
+            }}</el-button>
           </template>
         </el-table-column>
       </el-table>
     </template>
     <template #footer>
-      footer
+      <el-pagination
+        background
+        layout="prev, pager, next, sizes"
+        v-model:total="total"
+        v-model:current-page="queryConfig.current"
+        v-model:page-size="queryConfig.size"
+        @change="handleQuery"
+      />
     </template>
   </el-card>
 </template>

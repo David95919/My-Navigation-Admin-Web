@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useRoute} from "vue-router";
+import { useRoute } from 'vue-router'
 
-const route = useRoute();
+const route = useRoute()
 </script>
 <template>
   <el-container class="common-layout">
@@ -10,31 +10,31 @@ const route = useRoute();
         <el-menu class="menu" :default-active="route.path" router collapse-transition>
           <el-menu-item index="/home">
             <el-icon>
-              <i-material-symbols-home-outline-rounded/>
+              <i-material-symbols-home-outline-rounded />
             </el-icon>
             <span>{{ $t('manage.home') }}</span>
           </el-menu-item>
           <el-menu-item index="/navigation">
             <el-icon>
-              <i-material-symbols-assistant-navigation-outline-rounded/>
+              <i-material-symbols-assistant-navigation-outline-rounded />
             </el-icon>
             <span>{{ $t('manage.navigation') }}</span>
           </el-menu-item>
           <el-menu-item index="/category">
             <el-icon>
-              <i-material-symbols-category-outline-rounded/>
+              <i-material-symbols-category-outline-rounded />
             </el-icon>
             <span>{{ $t('manage.category') }}</span>
           </el-menu-item>
           <el-menu-item index="/tag">
             <el-icon>
-              <i-material-symbols-tag-rounded/>
+              <i-material-symbols-tag-rounded />
             </el-icon>
             <span>{{ $t('manage.tag') }}</span>
           </el-menu-item>
           <el-menu-item index="/user">
             <el-icon>
-              <i-material-symbols-user-attributes-outline-rounded/>
+              <i-material-symbols-user-attributes-outline-rounded />
             </el-icon>
             <span>{{ $t('manage.user') }}</span>
           </el-menu-item>

@@ -1,35 +1,35 @@
 <script setup lang="ts">
-import DialogComponent from "@/components/DialogComponent.vue";
-import {ref} from "vue";
-import {createTag, getTagById, updateTag} from "@/service/TagService";
+import DialogComponent from '@/components/DialogComponent.vue'
+import { ref } from 'vue'
+import { createTag, getTagById, updateTag } from '@/service/TagService'
 
 const emits = defineEmits<{
-  confirm: [],
-}>();
+  confirm: []
+}>()
 
 const dialogVisible = ref(false)
 const isAdd = ref(true)
 const editId = ref(-1)
-const form = ref<{ name: string }>({name: ''})
+const form = ref<{ name: string }>({ name: '' })
 
 const open = async (id?: number) => {
   dialogVisible.value = true
 
   //判断模式
   isAdd.value = id === undefined
-  form.value = {name: ''}
+  form.value = { name: '' }
 
   if (id != undefined) {
     editId.value = id
-    form.value = {...await getTagById(id)}
+    form.value = { ...(await getTagById(id)) }
   }
 }
 
 const confirm = async () => {
   if (isAdd.value) {
-    await createTag({id: 0, name: form.value.name})
+    await createTag({ id: 0, name: form.value.name })
   } else {
-    await updateTag({id: editId.value, name: form.value.name});
+    await updateTag({ id: editId.value, name: form.value.name })
   }
 
   dialogVisible.value = false
@@ -41,7 +41,11 @@ defineExpose({
 })
 </script>
 <template>
-  <DialogComponent v-model:visible="dialogVisible" :title="isAdd ? $t('other.add'):$t('other.edit') " @confirm="confirm">
+  <DialogComponent
+    v-model:visible="dialogVisible"
+    :title="isAdd ? $t('other.add') : $t('other.edit')"
+    @confirm="confirm"
+  >
     <el-form :model="form">
       <el-form-item :label="$t('other.name')">
         <el-input v-model="form.name"></el-input>
@@ -49,5 +53,4 @@ defineExpose({
     </el-form>
   </DialogComponent>
 </template>
-<style scoped>
-</style>
+<style scoped></style>

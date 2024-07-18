@@ -1,50 +1,50 @@
-import {deleteById, get, create, getById, multipleDelete, update} from "@/api/CategoryApi";
-import {confirmDeletion, success} from "@/utils/Message";
-import type {Category} from "@/types/Category";
+import { deleteById, get, create, getById, multipleDelete, update } from '@/api/CategoryApi'
+import { confirmDeletion, success } from '@/utils/Message'
+import type { Category } from '@/types/Category'
 
 export async function getCategory() {
-    const category = await get();
+  const category = await get()
 
-    if (category.code === 0) return []
+  if (category.code === 0) return []
 
-    return category.data
+  return category.data
 }
 
 export async function deleteCategoryById(id: number) {
-    const isConfirm = await confirmDeletion();
-    if (isConfirm) {
-        const result = await deleteById(id);
+  const isConfirm = await confirmDeletion()
+  if (isConfirm) {
+    const result = await deleteById(id)
 
-        if (result.code === 1) success(result.msg)
-    }
+    if (result.code === 1) success(result.msg)
+  }
 }
 
 export async function getCategoryById(id: number) {
-    const result = await getById(id);
+  const result = await getById(id)
 
-    return result.data
+  return result.data
 }
 
 export async function updateCategory(category: Category) {
-    const result = await update(category);
+  const result = await update(category)
 
-    if (result.code === 1) success(result.msg)
+  if (result.code === 1) success(result.msg)
 }
 
 export async function createCategory(category: Category) {
-    const result = await create(category);
+  const result = await create(category)
 
-    if (result.code === 1) success(result.msg)
+  if (result.code === 1) success(result.msg)
 }
 
 export async function multipleDeleteCategory(category: Category[]) {
-    const isConfirm = await confirmDeletion();
-    if (isConfirm) {
-        const ids: number[] = []
-        category.forEach(item => ids.push(item.id))
+  const isConfirm = await confirmDeletion()
+  if (isConfirm) {
+    const ids: number[] = []
+    category.forEach((item) => ids.push(item.id))
 
-        const result = await multipleDelete(ids)
+    const result = await multipleDelete(ids)
 
-        if (result.code === 1) success(result.msg)
-    }
+    if (result.code === 1) success(result.msg)
+  }
 }
