@@ -40,6 +40,7 @@ handleGetCategory()
     v-model="selectValue"
     filterable
     :placeholder="$t('other.select')"
+    clearable
     :style="{ width: props.width }"
   >
     <el-option

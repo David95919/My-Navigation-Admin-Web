@@ -66,7 +66,7 @@ handleQuery()
               <CategorySelect v-model="queryConfig.category"></CategorySelect>
             </el-form-item>
             <el-form-item :label="$t('manage.tag')">
-              <TagSelect  v-model="queryConfig.tag"></TagSelect>
+              <TagSelect disabled v-model="queryConfig.tag"></TagSelect>
             </el-form-item>
             <el-form-item>
               <el-button @click="handleQuery">{{ $t('other.query') }}</el-button>

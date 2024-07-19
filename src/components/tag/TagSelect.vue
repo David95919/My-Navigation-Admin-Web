@@ -7,9 +7,11 @@ const props = withDefaults(
   defineProps<{
     default?: number
     width?: string
+    maxShowTags?: number
   }>(),
   {
-    width: '12vw'
+    width: '12vw',
+    max_show_tags: 3
   }
 )
 
@@ -43,6 +45,8 @@ handleGetTag()
     multiple
     collapse-tags
     collapse-tags-tooltip
+    :max-collapse-tags="maxShowTags"
+    clearable
     :style="{ width: props.width }"
   >
     <el-option v-for="tag in tags" :key="tag.id" :value="tag.id" :label="tag.name"></el-option>

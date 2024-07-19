@@ -24,5 +24,5 @@ export type NavDTO = {
   url: string
   description: string
   tags: number[]
-  category: number
+  category: number | null
 }

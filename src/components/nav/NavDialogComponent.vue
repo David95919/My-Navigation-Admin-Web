@@ -17,7 +17,7 @@ const defaultForm: NavDTO = {
   url: '',
   description: '',
   tags: [],
-  category: 0
+  category: null
 }
 const dialogVisible = ref(false)
 const isAdd = ref(true)
@@ -69,7 +69,7 @@ defineExpose({
         <el-input v-model="form.description" type="textarea" autosize></el-input>
       </el-form-item>
       <el-form-item :label="$t('manage.tag')">
-        <TagSelect v-model="form.tags" width="100%"></TagSelect>
+        <TagSelect v-model="form.tags" width="100%" :maxShowTags="5"></TagSelect>
       </el-form-item>
       <el-form-item :label="$t('manage.category')">
         <CategorySelect v-model="form.category" width="100%"></CategorySelect>
