@@ -42,6 +42,7 @@ declare module 'vue' {
     IMaterialSymbolsSettings: typeof import('~icons/material-symbols/settings')['default']
     IMaterialSymbolsTagRounded: typeof import('~icons/material-symbols/tag-rounded')['default']
     IMaterialSymbolsUserAttributesOutlineRounded: typeof import('~icons/material-symbols/user-attributes-outline-rounded')['default']
+    NavDialogComponent: typeof import('./src/components/nav/NavDialogComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SettingsDialogComponent: typeof import('./src/components/SettingsDialogComponent.vue')['default']

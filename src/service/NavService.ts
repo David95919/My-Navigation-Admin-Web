@@ -14,7 +14,6 @@ export async function getNav(query: NavQueryConfig) {
 
 export async function getNavById(id: number) {
   const nav = await getById(id)
-
   return nav.data
 }
 

@@ -3,13 +3,14 @@ import type { Nav, NavQueryConfig } from '@/types/Nav'
 import { computed, ref } from 'vue'
 import TagSelect from '@/components/tag/TagSelect.vue'
 import CategorySelect from '@/components/category/CategorySelect.vue'
-import { getNav } from '@/service/NavService'
-import { deleteById } from '@/api/NavApi'
+import { deleteNavById, getNav } from '@/service/NavService'
+import NavDialogComponent from '@/components/nav/NavDialogComponent.vue'
 
+const navDialog = ref<InstanceType<typeof NavDialogComponent> | null>(null)
 const queryConfig = ref<NavQueryConfig>({
   name: '',
   category: null,
-  tag: null,
+  tag: [],
   current: 1,
   size: 10
 })
@@ -20,7 +21,7 @@ const filterTableData = computed(() =>
   )
 )
 const search = ref('')
-const total = ref(1110)
+const total = ref(0)
 
 const handleQuery = async () => {
   const page = await getNav(queryConfig.value)
@@ -31,17 +32,21 @@ const handleQuery = async () => {
 const handleClear = async () => {
   queryConfig.value.name = ''
   queryConfig.value.category = null
-  queryConfig.value.tag = null
+  queryConfig.value.tag = []
 }
 
-const handleEdit = (id: number) => {}
+const handleEdit = (id: number) => {
+  navDialog.value?.open(id)
+}
 
-const handleAdd = () => {}
+const handleAdd = () => {
+  navDialog.value?.open()
+}
 
 const handleMultipleDelete = () => {}
 
 const handleDelete = async (id: number) => {
-  await deleteById(id)
+  await deleteNavById(id)
   handleQuery()
 }
 
@@ -61,17 +66,17 @@ handleQuery()
               <CategorySelect v-model="queryConfig.category"></CategorySelect>
             </el-form-item>
             <el-form-item :label="$t('manage.tag')">
-              <TagSelect v-model="queryConfig.tag"></TagSelect>
+              <TagSelect  v-model="queryConfig.tag"></TagSelect>
             </el-form-item>
             <el-form-item>
               <el-button @click="handleQuery">{{ $t('other.query') }}</el-button>
               <el-button @click="handleClear">{{ $t('other.clear') }}</el-button>
             </el-form-item>
           </el-form>
-          <el-button disabled plain @click="handleAdd">{{ $t('other.add') }}</el-button>
-          <el-button disabled plain type="danger" @click="handleMultipleDelete">{{
-            $t('other.delete')
-          }}</el-button>
+          <el-button plain @click="handleAdd">{{ $t('other.add') }}</el-button>
+          <el-button disabled plain type="danger" @click="handleMultipleDelete"
+            >{{ $t('other.delete') }}
+          </el-button>
         </div>
       </div>
     </template>
@@ -104,12 +109,12 @@ handleQuery()
             <el-input v-model="search" size="small" :placeholder="$t('other.search')" />
           </template>
           <template #default="scope">
-            <el-button disabled plain @click="handleEdit(scope.row.id)">{{
-              $t('other.edit')
-            }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
-              $t('other.delete')
-            }}</el-button>
+            <el-button plain @click="handleEdit(scope.row.id)"
+              >{{ $t('other.edit') }}
+            </el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)"
+              >{{ $t('other.delete') }}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -125,6 +130,7 @@ handleQuery()
       />
     </template>
   </el-card>
+  <NavDialogComponent ref="navDialog" @confirm="handleQuery"></NavDialogComponent>
 </template>
 <style scoped lang="less">
 .card {

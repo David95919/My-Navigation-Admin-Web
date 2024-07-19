@@ -4,7 +4,7 @@ import type { Category } from '@/types/Category'
 export type NavQueryConfig = {
   name?: string
   category?: number | null
-  tag?: number | null
+  tag?: number[] | null
   current: number
   size: number
 }

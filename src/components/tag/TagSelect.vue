@@ -3,9 +3,15 @@ import { ref } from 'vue'
 import { createTag, getTag } from '@/service/TagService'
 import type { Tag } from '@/types/Tag'
 
-const props = defineProps<{
-  default?: number
-}>()
+const props = withDefaults(
+  defineProps<{
+    default?: number
+    width?: string
+  }>(),
+  {
+    width: '12vw'
+  }
+)
 
 const selectValue = ref(props.default)
 const tags = ref<Tag[]>([])
@@ -30,17 +36,25 @@ const handleCancel = () => {
 handleGetTag()
 </script>
 <template>
-  <el-select v-model="selectValue" filterable :placeholder="$t('other.select')" style="width: 5vw">
+  <el-select
+    v-model="selectValue"
+    filterable
+    :placeholder="$t('other.select')"
+    multiple
+    collapse-tags
+    collapse-tags-tooltip
+    :style="{ width: props.width }"
+  >
     <el-option v-for="tag in tags" :key="tag.id" :value="tag.id" :label="tag.name"></el-option>
     <template #footer>
-      <el-button v-if="!isAdd" size="small" @click="isAdd = true">{{
-        $t('tag.add_prompt')
-      }}</el-button>
+      <el-button v-if="!isAdd" size="small" @click="isAdd = true"
+        >{{ $t('tag.add_prompt') }}
+      </el-button>
       <template v-else>
         <el-input size="small" v-model="tagInput" style="width: 5vw"></el-input>
-        <el-button type="primary" size="small" @click="handleConfirm">{{
-          $t('other.confirm')
-        }}</el-button>
+        <el-button type="primary" size="small" @click="handleConfirm"
+          >{{ $t('other.confirm') }}
+        </el-button>
         <el-button size="small" @click="handleCancel">{{ $t('other.cancel') }}</el-button>
       </template>
     </template>
