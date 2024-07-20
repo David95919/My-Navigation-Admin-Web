@@ -1,4 +1,5 @@
 export default {
+  language: 'zh',
   error: {
     not_login: '未登录'
   },
@@ -24,6 +25,7 @@ export default {
     search: '搜索',
     query: '查询',
     clear: '清除',
+    upload: '上传',
     add: '添加',
     edit: '编辑',
     delete: '删除',
@@ -49,6 +51,9 @@ export default {
   },
   settings: {
     dark: '黑暗模式',
-    glass: '透明背景'
+    glass: '透明背景',
+    background_image: '背景图',
+    blur_level: '模糊程度',
+    language: '语言'
   }
 }

@@ -64,8 +64,8 @@ const handleOpenSettings = () => {
         </el-scrollbar>
       </div>
     </div>
+    <SettingsDialogComponent ref="settingsDialog"></SettingsDialogComponent>
   </el-container>
-  <SettingsDialogComponent ref="settingsDialog"></SettingsDialogComponent>
 </template>
 <style scoped lang="less">
 .common-layout {

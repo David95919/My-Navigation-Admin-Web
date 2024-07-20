@@ -4,8 +4,9 @@ import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { settingsStore } from '@/stores/settingsStore'
+import i18n from '@/locales'
 
-const { isGlass } = storeToRefs(settingsStore())
+const { isGlass, background, blurLevel } = storeToRefs(settingsStore())
 
 const isDark = ref(useDark())
 const dialogVisible = ref(false)
@@ -16,6 +17,12 @@ const confirm = async () => {
 
 const open = async () => {
   dialogVisible.value = true
+}
+
+const handleSelectLanguage = (l: any) => {
+  console.log(l )
+  localStorage.setItem('language', l)
+  i18n.global.locale = l
 }
 
 defineExpose({
@@ -38,6 +45,22 @@ defineExpose({
       </el-form-item>
       <el-form-item :label="$t('settings.glass')">
         <el-switch v-model="isGlass"></el-switch>
+      </el-form-item>
+      <el-form-item :label="$t('settings.background_image')">
+        <el-input v-model="background"></el-input>
+      </el-form-item>
+      <el-form-item :label="$t('settings.blur_level')">
+        <el-slider :disabled="!isGlass" v-model="blurLevel" :show-tooltip="false" />
+      </el-form-item>
+      <el-form-item :label="$t('settings.language')">
+        <el-select v-model="i18n.global.locale" @change="handleSelectLanguage">
+          <el-option
+            v-for="l in i18n.global.messages"
+            :key="l.language"
+            :value="l.language"
+            :label="l.language"
+          />
+        </el-select>
       </el-form-item>
     </el-form>
   </DialogComponent>

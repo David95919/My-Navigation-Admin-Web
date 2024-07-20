@@ -1,6 +1,5 @@
-import { warning } from '@/utils/Message'
-
 export default {
+  language: 'en',
   error: {
     not_login: 'not signed in'
   },
@@ -26,6 +25,7 @@ export default {
     search: 'Search',
     query: 'Query',
     clear: 'Clear',
+    upload: 'Upload',
     add: 'Add',
     edit: 'Edit',
     delete: 'Delete',
@@ -51,6 +51,9 @@ export default {
   },
   settings: {
     dark: 'DarkMod',
-    glass: 'Glass background'
+    glass: 'Glass background',
+    background_image: "Background Image",
+    blur_level: 'Blur Level',
+    language: 'Language'
   }
 }
