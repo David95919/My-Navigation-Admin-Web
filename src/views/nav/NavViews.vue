@@ -88,7 +88,9 @@ handleQuery()
           <template #default="scope">
             <el-popover trigger="hover" :content="scope.row.url" placement="left">
               <template #reference>
-                <el-link class="url" :href="scope.row.url" target="_blank">{{ scope.row.url }}</el-link>
+                <el-link class="url" :href="scope.row.url" target="_blank">{{
+                  scope.row.url
+                }}</el-link>
               </template>
             </el-popover>
           </template>
@@ -154,7 +156,8 @@ handleQuery()
   }
 }
 
-.description,.url {
+.description,
+.url {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

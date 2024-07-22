@@ -33,7 +33,8 @@ export default {
     confirm: 'Confirm',
     confirm_delete: 'Confirm delete?',
     warning: 'warning',
-    select: 'Select'
+    select: 'Select',
+    other: 'Other'
   },
   user: {
     username: 'Username',
@@ -50,10 +51,14 @@ export default {
     description: 'Description'
   },
   settings: {
-    dark: 'DarkMod',
-    glass: 'Glass background',
+    dark: 'Dark Mod',
+    glass: 'Glass Background',
     background_image: 'Background Image',
     blur_level: 'Blur Level',
-    language: 'Language'
+    language: 'Language',
+    sign_out: 'Sign out',
+    about: 'About',
+    author: 'Author',
+    version: 'Version'
   }
 }

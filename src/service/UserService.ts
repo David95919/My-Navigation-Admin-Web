@@ -6,19 +6,27 @@ import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/userStore'
 
 //用户登录服务
-export async function userLogin(user: User, keep: boolean): Promise<boolean> {
-  const result: Result<UserLogin> = await login(user)
+export async function userLogin(myUser: User, keep: boolean): Promise<boolean> {
+  const { token, temp_token, user } = storeToRefs(useUserStore())
+
+  user.value.id = 0
+  user.value.username = ''
+
+  const result: Result<UserLogin> = await login(myUser)
 
   //登录失败
   if (result.code === 0) return false
 
-  success(result?.msg)
+  success(result.msg)
+
   if (keep) {
-    const { token, user } = storeToRefs(useUserStore())
     token.value = result.data.token
-    user.value.id = result.data.id
-    user.value.username = result.data.username
+  } else {
+    temp_token.value = result.data.token
   }
+
+  user.value.id = result.data.id
+  user.value.username = result.data.username
 
   return true
 }

@@ -26,8 +26,7 @@ const containerBackground = ref(`url(${background.value})`)
 <style>
 .el-dialog,
 .el-card,
-.el-tag
-{
+.el-tag {
   background-color: v-bind(
     "isGlass ? 'rgba(0, 0, 0, 0.2)' : isDark? '#1d1e1f' : '#ffffff'"
   ) !important;

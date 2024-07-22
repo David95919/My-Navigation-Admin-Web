@@ -61,7 +61,7 @@ router.beforeEach((to) => {
   if (publicPathList.includes(to.path)) return true
 
   const refs = storeToRefs(useUserStore())
-  if (refs.token.value) {
+  if (refs.token.value || refs.temp_token.value) {
     return true
   } else {
     //未登录

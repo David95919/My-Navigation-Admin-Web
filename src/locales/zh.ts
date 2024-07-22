@@ -33,7 +33,8 @@ export default {
     confirm: '确认',
     confirm_delete: '确认删除?',
     warning: '警告',
-    select: '选择'
+    select: '选择',
+    other: '其他'
   },
   user: {
     username: '用户名',
@@ -54,6 +55,10 @@ export default {
     glass: '透明背景',
     background_image: '背景图',
     blur_level: '模糊程度',
-    language: '语言'
+    language: '语言',
+    sign_out: '退出登录',
+    about: '关于',
+    author: '作者',
+    version: '版本'
   }
 }

@@ -10,6 +10,7 @@ declare module 'vue' {
     CategoryDialogComponent: typeof import('./src/components/category/CategoryDialogComponent.vue')['default']
     CategorySelect: typeof import('./src/components/category/CategorySelect.vue')['default']
     DialogComponent: typeof import('./src/components/DialogComponent.vue')['default']
+    ElAnchorLink: typeof import('element-plus/es')['ElAnchorLink']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']

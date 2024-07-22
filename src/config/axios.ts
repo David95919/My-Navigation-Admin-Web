@@ -14,9 +14,12 @@ const instance: AxiosInstance = axios.create({
 //请求拦截器
 instance.interceptors.request.use(
   function (config: InternalAxiosRequestConfig) {
-    const store = useUserStore()
-    if (store.token) {
-      config.headers['token'] = store.token
+    const { token, temp_token } = useUserStore()
+    if (token) {
+      config.headers['token'] = token
+    }
+    if (temp_token) {
+      config.headers['token'] = temp_token
     }
 
     return config
@@ -34,7 +37,7 @@ instance.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
-      useUserStore().cleanToken()
+      useUserStore().signOut()
       useRouter().push('/login')
     }
     return Promise.reject(error)

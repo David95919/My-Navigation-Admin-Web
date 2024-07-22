@@ -12,12 +12,15 @@ export const useUserStore = defineStore(
     })
 
     const token: Ref<string> = ref('')
+    const temp_token: Ref<string> = ref('')
 
-    const cleanToken = () => {
+    const signOut = () => {
       token.value = ''
+      temp_token.value = ''
+      window.location.replace('/')
     }
 
-    return { user, token, cleanToken }
+    return { user, token, signOut, temp_token }
   },
   {
     persist: {
