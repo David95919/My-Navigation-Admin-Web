@@ -13,7 +13,7 @@ const containerBackground = ref(`url(${background.value})`)
   <router-view></router-view>
 </template>
 <style lang="less">
-@color: v-bind("isGlass ? 'rgb(0, 0, 0)' : ''");
+@color: v-bind("isGlass ? 'rgb(0, 0, 0)' : 'rgb(20, 20, 20)' ");
 
 :root {
   --el-menu-bg-color: @color !important;
@@ -23,10 +23,11 @@ const containerBackground = ref(`url(${background.value})`)
   --el-color-primary-light-9: @color !important;
 }
 </style>
-
 <style>
 .el-dialog,
-.el-card {
+.el-card,
+.el-tag
+{
   background-color: v-bind(
     "isGlass ? 'rgba(0, 0, 0, 0.2)' : isDark? '#1d1e1f' : '#ffffff'"
   ) !important;

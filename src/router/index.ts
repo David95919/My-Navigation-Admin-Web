@@ -31,7 +31,7 @@ const router = createRouter({
         {
           path: '/navigation',
           name: 'navigation',
-          component: () => import('@/views/nav/NavigationViews.vue')
+          component: () => import('@/views/nav/NavViews.vue')
         },
         {
           path: '/category',

@@ -86,7 +86,11 @@ handleQuery()
         <el-table-column prop="name" :label="$t('other.name')"></el-table-column>
         <el-table-column prop="url" :label="$t('nav.url')">
           <template #default="scope">
-            <el-link :href="scope.row.url" target="_blank">{{ scope.row.url }}</el-link>
+            <el-popover trigger="hover" :content="scope.row.url" placement="left">
+              <template #reference>
+                <el-link class="url" :href="scope.row.url" target="_blank">{{ scope.row.url }}</el-link>
+              </template>
+            </el-popover>
           </template>
         </el-table-column>
         <el-table-column prop="description" :label="$t('nav.description')">
@@ -150,7 +154,7 @@ handleQuery()
   }
 }
 
-.description {
+.description,.url {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
