@@ -38,14 +38,18 @@ const open = async (id?: number) => {
 }
 
 const confirm = async () => {
+  let result = false
+
   if (isAdd.value) {
-    await createNav(form.value)
+    result = await createNav(form.value)
   } else {
-    await updateNav(form.value)
+    result = await updateNav(form.value)
   }
 
-  dialogVisible.value = false
-  emits('confirm')
+  if (result) {
+    dialogVisible.value = false
+    emits('confirm')
+  }
 }
 
 defineExpose({

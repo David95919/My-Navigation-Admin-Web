@@ -32,12 +32,16 @@ export async function updateTag(tag: Tag) {
   const result = await update(tag)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }
 
 export async function createTag(tag: Tag) {
   const result = await create(tag)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }
 
 export async function multipleDeleteTag(tags: Tag[]) {

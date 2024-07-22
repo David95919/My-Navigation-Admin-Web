@@ -21,6 +21,8 @@ export async function createNav(nav: NavDTO) {
   const result = await create(nav)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }
 
 export async function deleteNavById(id: number) {
@@ -37,4 +39,6 @@ export async function updateNav(nav: NavDTO) {
   const result = await update(nav)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }

@@ -29,12 +29,16 @@ export async function updateCategory(category: Category) {
   const result = await update(category)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }
 
 export async function createCategory(category: Category) {
   const result = await create(category)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }
 
 export async function multipleDeleteCategory(category: Category[]) {

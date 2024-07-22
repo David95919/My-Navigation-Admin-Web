@@ -20,7 +20,7 @@ const open = async () => {
 }
 
 const handleSelectLanguage = (l: any) => {
-  console.log(l )
+  console.log(l)
   localStorage.setItem('language', l)
   i18n.global.locale = l
 }
@@ -47,7 +47,7 @@ defineExpose({
         <el-switch v-model="isGlass"></el-switch>
       </el-form-item>
       <el-form-item :label="$t('settings.background_image')">
-        <el-input v-model="background"></el-input>
+        <el-input v-model="background" clearable></el-input>
       </el-form-item>
       <el-form-item :label="$t('settings.blur_level')">
         <el-slider :disabled="!isGlass" v-model="blurLevel" :show-tooltip="false" />

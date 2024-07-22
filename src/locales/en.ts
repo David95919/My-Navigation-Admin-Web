@@ -52,7 +52,7 @@ export default {
   settings: {
     dark: 'DarkMod',
     glass: 'Glass background',
-    background_image: "Background Image",
+    background_image: 'Background Image',
     blur_level: 'Blur Level',
     language: 'Language'
   }

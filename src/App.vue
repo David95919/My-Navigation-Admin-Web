@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 
-const { isGlass, background,blurLevel } = storeToRefs(settingsStore())
+const { isGlass, background, blurLevel } = storeToRefs(settingsStore())
 const isDark = ref(useDark())
 const containerBackground = ref(`url(${background.value})`)
 </script>
@@ -30,7 +30,9 @@ const containerBackground = ref(`url(${background.value})`)
   background-color: v-bind(
     "isGlass ? 'rgba(0, 0, 0, 0.2)' : isDark? '#1d1e1f' : '#ffffff'"
   ) !important;
-  backdrop-filter: v-bind("isGlass ? `blur(${blurLevel}px)` : isDark? '#1d1e1f' : '#ffffff'") !important;
+  backdrop-filter: v-bind(
+    "isGlass ? `blur(${blurLevel}px)` : isDark? '#1d1e1f' : '#ffffff'"
+  ) !important;
 }
 
 .el-container {

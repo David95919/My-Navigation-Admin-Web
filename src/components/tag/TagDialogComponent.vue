@@ -26,14 +26,18 @@ const open = async (id?: number) => {
 }
 
 const confirm = async () => {
+  let result = false
+
   if (isAdd.value) {
-    await createTag({ id: 0, name: form.value.name })
+    result = await createTag({ id: 0, name: form.value.name })
   } else {
-    await updateTag({ id: editId.value, name: form.value.name })
+    result = await updateTag({ id: editId.value, name: form.value.name })
   }
 
-  dialogVisible.value = false
-  emits('confirm')
+  if (result) {
+    dialogVisible.value = false
+    emits('confirm')
+  }
 }
 
 defineExpose({

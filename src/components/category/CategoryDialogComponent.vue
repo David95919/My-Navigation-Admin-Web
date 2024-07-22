@@ -26,14 +26,18 @@ const open = async (id?: number) => {
 }
 
 const confirm = async () => {
+  let result = false
+
   if (isAdd.value) {
-    await createCategory({ id: 0, name: form.value.name })
+    result = await createCategory({ id: 0, name: form.value.name })
   } else {
-    await updateCategory({ id: editId.value, name: form.value.name })
+    result = await updateCategory({ id: editId.value, name: form.value.name })
   }
 
-  dialogVisible.value = false
-  emits('confirm')
+  if (result) {
+    dialogVisible.value = false
+    emits('confirm')
+  }
 }
 
 defineExpose({

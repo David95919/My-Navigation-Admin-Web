@@ -109,9 +109,7 @@ handleQuery()
             <el-input v-model="search" size="small" :placeholder="$t('other.search')" />
           </template>
           <template #default="scope">
-            <el-button plain @click="handleEdit(scope.row.id)"
-              >{{ $t('other.edit') }}
-            </el-button>
+            <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }} </el-button>
             <el-button type="danger" plain @click="handleDelete(scope.row.id)"
               >{{ $t('other.delete') }}
             </el-button>

@@ -26,18 +26,26 @@ const open = async (id?: number) => {
 }
 
 const confirm = async () => {
+  let result = false
+
   if (isAdd.value) {
-    await createUser({ id: 0, username: form.value.username, password: form.value.password })
+    result = await createUser({
+      id: 0,
+      username: form.value.username,
+      password: form.value.password
+    })
   } else {
-    await updateUser({
+    result = await updateUser({
       id: editId.value,
       username: form.value.username,
       password: form.value.password
     })
   }
 
-  dialogVisible.value = false
-  emits('confirm')
+  if (result) {
+    dialogVisible.value = false
+    emits('confirm')
+  }
 }
 
 defineExpose({

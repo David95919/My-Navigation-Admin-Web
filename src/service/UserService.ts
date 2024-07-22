@@ -45,6 +45,8 @@ export async function createUser(user: User) {
   const result = await create(user)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }
 
 export async function getUserById(id: number) {
@@ -57,4 +59,6 @@ export async function updateUser(user: User) {
   const result = await update(user)
 
   if (result.code === 1) success(result.msg)
+
+  return result.code !== 0
 }

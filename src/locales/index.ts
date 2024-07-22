@@ -4,7 +4,7 @@ import en from './en'
 
 // 实例化I18n
 const i18n = createI18n({
-  locale: localStorage.getItem('language')  || 'zh',
+  locale: localStorage.getItem('language') || 'zh',
   messages: {
     zh,
     en
