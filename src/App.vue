@@ -2,18 +2,36 @@
 import { RouterView } from 'vue-router'
 import { settingsStore } from '@/stores/settingsStore'
 import { storeToRefs } from 'pinia'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useDark } from '@vueuse/core'
 
 const { isGlass, background, blurLevel } = storeToRefs(settingsStore())
 const isDark = ref(useDark())
 const containerBackground = ref(`url(${background.value})`)
 
+const setMyColor = () => {
+  document.documentElement.style.setProperty(
+    '--my-color',
+    isGlass.value ? 'rgba(0, 0, 0, 0.2)' : isDark.value ? '#1d1e1f' : '#ffffff'
+  )
+}
+
+const setMyBlur = () => {
+  document.documentElement.style.setProperty(
+    '--my-blur',
+    isGlass.value ? `blur(${blurLevel.value}px)` : isDark.value ? '#1d1e1f' : '#ffffff'
+  )
+}
+
 onMounted(async () => {
-  if (isGlass.value) {
-    await import('./assets/css/glass.css')
-    document.documentElement.style.setProperty('--my-blur', `${blurLevel.value}px`)
-  }
+  await import('./assets/css/glass.css')
+  setMyColor()
+  setMyBlur()
+})
+
+watch([blurLevel, isGlass, isDark], () => {
+  setMyColor()
+  setMyBlur()
 })
 </script>
 <template>
@@ -28,7 +46,8 @@ onMounted(async () => {
   --el-fill-color-blank: @color !important;
   --el-color-danger-light-9: @color !important;
   --el-color-primary-light-9: @color !important;
-  --my-blur: 10px;
+  --my-blur: #1d1e1f;
+  --my-color: #1d1e1f;
 }
 </style>
 <style>
