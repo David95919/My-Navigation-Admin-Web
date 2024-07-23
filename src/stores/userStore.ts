@@ -20,7 +20,11 @@ export const useUserStore = defineStore(
       window.location.replace('/')
     }
 
-    return { user, token, signOut, temp_token }
+    const isLogin = () => {
+      return token.value || temp_token.value
+    }
+
+    return { user, token, signOut, temp_token, isLogin }
   },
   {
     persist: {
