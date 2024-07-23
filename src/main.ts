@@ -1,10 +1,10 @@
-import './assets/main.css'
+import './assets/css/main.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/src/message-box.scss'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-import { createApp, watch } from 'vue'
+import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import router from './router'
 import i18n from './locales/index'

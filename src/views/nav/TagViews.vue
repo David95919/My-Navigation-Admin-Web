@@ -49,14 +49,14 @@ handleGetTag()
         <div class="title">{{ $t('manage.tag') }}</div>
         <div>
           <el-button plain @click="handleAdd">{{ $t('other.add') }}</el-button>
-          <el-button type="danger" plain @click="handleMultipleDelete">{{
-            $t('other.delete')
-          }}</el-button>
+          <el-button type="danger" plain @click="handleMultipleDelete"
+            >{{ $t('other.delete') }}
+          </el-button>
         </div>
       </div>
     </template>
     <template #default>
-      <el-table :data="filterTableData" border @selection-change="handleSelectionChange">
+      <el-table :data="filterTableData" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="id" label="Id" />
         <el-table-column prop="name" :label="$t('other.name')" />
@@ -66,9 +66,9 @@ handleGetTag()
           </template>
           <template #default="scope">
             <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
-              $t('other.delete')
-            }}</el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)"
+              >{{ $t('other.delete') }}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>

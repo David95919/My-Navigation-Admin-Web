@@ -81,12 +81,17 @@ handleQuery()
       </div>
     </template>
     <template #default>
-      <el-table :data="filterTableData" border>
+      <el-table :data="filterTableData">
         <el-table-column prop="id" label="id"></el-table-column>
         <el-table-column prop="name" :label="$t('other.name')"></el-table-column>
         <el-table-column prop="url" :label="$t('nav.url')">
           <template #default="scope">
-            <el-popover trigger="hover" :content="scope.row.url" placement="left">
+            <el-popover
+              trigger="hover"
+              :content="scope.row.url"
+              placement="left"
+              :show-arrow="false"
+            >
               <template #reference>
                 <el-link class="url" :href="scope.row.url" target="_blank">{{
                   scope.row.url

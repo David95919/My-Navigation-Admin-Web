@@ -56,7 +56,7 @@ handleGetCategory()
       </div>
     </template>
     <template #default>
-      <el-table :data="filterTableData" border @selection-change="handleSelectionChange">
+      <el-table :data="filterTableData" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="id" label="Id" />
         <el-table-column prop="name" :label="$t('other.name')" />

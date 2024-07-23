@@ -1,0 +1,5 @@
+.el-message-box,
+.el-popper {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(var(--my-blur)) !important;
+}

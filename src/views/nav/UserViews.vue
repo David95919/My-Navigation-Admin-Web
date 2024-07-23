@@ -43,7 +43,7 @@ handleGetUser()
       </div>
     </template>
     <template #default>
-      <el-table :data="filterTableData" border>
+      <el-table :data="filterTableData">
         <el-table-column prop="id" label="Id" />
         <el-table-column prop="username" :label="$t('user.username')" />
         <el-table-column label="Operations">
@@ -52,9 +52,9 @@ handleGetUser()
           </template>
           <template #default="scope">
             <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
-              $t('other.delete')
-            }}</el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)"
+              >{{ $t('other.delete') }}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>

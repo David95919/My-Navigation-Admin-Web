@@ -2,12 +2,19 @@
 import { RouterView } from 'vue-router'
 import { settingsStore } from '@/stores/settingsStore'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useDark } from '@vueuse/core'
 
 const { isGlass, background, blurLevel } = storeToRefs(settingsStore())
 const isDark = ref(useDark())
 const containerBackground = ref(`url(${background.value})`)
+
+onMounted(async () => {
+  if (isGlass.value) {
+    await import('./assets/css/glass.css')
+    document.documentElement.style.setProperty('--my-blur', `${blurLevel.value}px`)
+  }
+})
 </script>
 <template>
   <router-view></router-view>
@@ -21,6 +28,7 @@ const containerBackground = ref(`url(${background.value})`)
   --el-fill-color-blank: @color !important;
   --el-color-danger-light-9: @color !important;
   --el-color-primary-light-9: @color !important;
+  --my-blur: 10px;
 }
 </style>
 <style>
