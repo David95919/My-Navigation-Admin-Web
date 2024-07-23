@@ -4,6 +4,7 @@
 
 > **注意：** 该项目目前仍在开发阶段，请勿使用！
 
-# TODO
-1. loading效果
-2. 表单规则
+# Docker
+```bash
+docker run -d --name my-navigation-web --network my-navigation-network -e LISTEN_PORT="80" -e SERVER_IP="!!! my-navigation-admin的ip !!!"  -p 8080:80 david95919/my-navigation-web:latest
+```
