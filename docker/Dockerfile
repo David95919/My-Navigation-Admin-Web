@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 COPY dist/ /usr/share/nginx/html/
-COPY default.conf.template /etc/nginx/templates/default.conf.template
+COPY docker/default.conf.template /etc/nginx/templates/default.conf.template
 WORKDIR /etc/nginx/conf.d
 
 ENV LISTEN_PORT=80
