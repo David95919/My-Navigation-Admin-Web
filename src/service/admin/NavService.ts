@@ -1,6 +1,7 @@
-import type { NavDTO, NavQueryConfig } from '@/types/Nav'
-import { create, deleteById, get, getById, update } from '@/api/NavApi'
+import type { Nav, NavDTO, NavQueryConfig } from '@/types/Nav'
+import { create, deleteById, get, getById, update, multipleDelete } from '@/api/admin/NavApi'
 import { confirmDeletion, success } from '@/utils/Message'
+import type { Tag } from '@/types/Tag'
 
 export async function getNav(query: NavQueryConfig) {
   const newQuery: NavQueryConfig = { current: query.current, size: query.size }
@@ -41,4 +42,16 @@ export async function updateNav(nav: NavDTO) {
   if (result.code === 1) success(result.msg)
 
   return result.code !== 0
+}
+
+export async function multipleDeleteNav(navs: Nav[]) {
+  const isConfirm = await confirmDeletion()
+  if (isConfirm) {
+    const ids: number[] = []
+    navs.forEach((item) => ids.push(item.id))
+
+    const result = await multipleDelete(ids)
+
+    if (result.code === 1) success(result.msg)
+  }
 }

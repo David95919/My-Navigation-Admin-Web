@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { deleteUserById, getUser } from '@/service/UserService'
+import { deleteUserById, getUser } from '@/service/admin/UserService'
 import { ref, computed } from 'vue'
 import type { UserVO } from '@/types/User'
-import type UserDialogComponent from '@/components/user/UserDialogComponent.vue'
+import type UserDialogComponent from '@/components/admin/user/UserDialogComponent.vue'
 
 const userDialog = ref<InstanceType<typeof UserDialogComponent> | null>(null)
 const userList = ref<UserVO[]>([])

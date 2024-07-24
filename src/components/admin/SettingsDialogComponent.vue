@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DialogComponent from '@/components/DialogComponent.vue'
+import DialogComponent from '@/components/admin/DialogComponent.vue'
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import { storeToRefs } from 'pinia'

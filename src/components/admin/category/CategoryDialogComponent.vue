@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import DialogComponent from '@/components/DialogComponent.vue'
+import DialogComponent from '@/components/admin/DialogComponent.vue'
 import { ref } from 'vue'
-import { createTag, getTagById, updateTag } from '@/service/TagService'
-import { TagFormRule } from '@/utils/Rules'
+import { createCategory, getCategoryById, updateCategory } from '@/service/admin/CategoryService'
+import { CategoryFormRule } from '@/utils/Rules'
 
 const emits = defineEmits<{
   confirm: []
@@ -22,7 +22,7 @@ const open = async (id?: number) => {
 
   if (id != undefined) {
     editId.value = id
-    form.value = { ...(await getTagById(id)) }
+    form.value = { ...(await getCategoryById(id)) }
   }
 }
 
@@ -30,9 +30,9 @@ const confirm = async () => {
   let result = false
 
   if (isAdd.value) {
-    result = await createTag({ id: 0, name: form.value.name })
+    result = await createCategory({ id: 0, name: form.value.name })
   } else {
-    result = await updateTag({ id: editId.value, name: form.value.name })
+    result = await updateCategory({ id: editId.value, name: form.value.name })
   }
 
   if (result) {
@@ -51,7 +51,7 @@ defineExpose({
     :title="isAdd ? $t('other.add') : $t('other.edit')"
     @confirm="confirm"
   >
-    <el-form :model="form" :rules="TagFormRule">
+    <el-form :model="form" :rules="CategoryFormRule">
       <el-form-item :label="$t('other.name')" prop="name">
         <el-input v-model="form.name"></el-input>
       </el-form-item>

@@ -1,4 +1,4 @@
-import { get, deleteById, getById, update, create, multipleDelete } from '@/api/TagApi'
+import { get, deleteById, getById, update, create, multipleDelete } from '@/api/admin/TagApi'
 import { success, error, confirmDeletion } from '@/utils/Message'
 import type { Tag } from '@/types/Tag'
 

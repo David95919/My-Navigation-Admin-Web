@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import type { FormRules } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import { User, Lock } from '@element-plus/icons-vue'
-import { userLogin } from '@/service/UserService'
+import { userLogin } from '@/service/admin/UserService'
 import { useRoute, useRouter } from 'vue-router'
 
 const { t } = useI18n()

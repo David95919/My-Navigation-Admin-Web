@@ -1,57 +1,61 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { getTag, deleteTagById, multipleDeleteTag } from '@/service/TagService'
-import type { Tag } from '@/types/Tag'
-import TagDialogComponent from '@/components/tag/TagDialogComponent.vue'
+import {
+  deleteCategoryById,
+  getCategory,
+  multipleDeleteCategory
+} from '@/service/admin/CategoryService'
+import type { Category } from '@/types/Category'
+import CategoryDialogComponent from '@/components/admin/category/CategoryDialogComponent.vue'
 
-const tagDialog = ref<InstanceType<typeof TagDialogComponent> | null>(null)
+const categoryDialog = ref<InstanceType<typeof CategoryDialogComponent> | null>(null)
 const search = ref('')
-const multipleSelection = ref<Tag[]>([])
-const tagList = ref<Tag[]>([])
+const multipleSelection = ref<Category[]>([])
+const categoryList = ref<Category[]>([])
 const filterTableData = computed(() =>
-  tagList.value.filter(
+  categoryList.value.filter(
     (data) => !search.value || data.name.toLowerCase().includes(search.value.toLowerCase())
   )
 )
 
-const handleGetTag = async () => {
-  tagList.value = await getTag()
+const handleGetCategory = async () => {
+  categoryList.value = await getCategory()
 }
 
 const handleDelete = async (id: number) => {
-  await deleteTagById(id)
-  handleGetTag()
+  await deleteCategoryById(id)
+  handleGetCategory()
 }
 
 const handleMultipleDelete = async () => {
-  await multipleDeleteTag(multipleSelection.value)
-  handleGetTag()
+  await multipleDeleteCategory(multipleSelection.value)
+  handleGetCategory()
 }
 
 const handleEdit = (id: number) => {
-  tagDialog.value?.open(id)
+  categoryDialog.value?.open(id)
 }
 
 const handleAdd = () => {
-  tagDialog.value?.open()
+  categoryDialog.value?.open()
 }
 
-const handleSelectionChange = (value: Tag[]) => {
+const handleSelectionChange = (value: Category[]) => {
   multipleSelection.value = value
 }
 
-handleGetTag()
+handleGetCategory()
 </script>
 <template>
   <el-card class="card" shadow="always">
     <template #header>
       <div class="header">
-        <div class="title">{{ $t('manage.tag') }}</div>
+        <div class="title">{{ $t('manage.category') }}</div>
         <div>
           <el-button plain @click="handleAdd">{{ $t('other.add') }}</el-button>
-          <el-button type="danger" plain @click="handleMultipleDelete"
-            >{{ $t('other.delete') }}
-          </el-button>
+          <el-button type="danger" plain @click="handleMultipleDelete">{{
+            $t('other.delete')
+          }}</el-button>
         </div>
       </div>
     </template>
@@ -66,15 +70,18 @@ handleGetTag()
           </template>
           <template #default="scope">
             <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
-            <el-button type="danger" plain @click="handleDelete(scope.row.id)"
-              >{{ $t('other.delete') }}
-            </el-button>
+            <el-button type="danger" plain @click="handleDelete(scope.row.id)">{{
+              $t('other.delete')
+            }}</el-button>
           </template>
         </el-table-column>
       </el-table>
     </template>
   </el-card>
-  <TagDialogComponent ref="tagDialog" @confirm="handleGetTag"></TagDialogComponent>
+  <CategoryDialogComponent
+    ref="categoryDialog"
+    @confirm="handleGetCategory"
+  ></CategoryDialogComponent>
 </template>
 <style scoped>
 .card {

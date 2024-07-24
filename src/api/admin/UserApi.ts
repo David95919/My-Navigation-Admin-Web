@@ -1,4 +1,4 @@
-import axios from '@/config/axios'
+import axios from '@/config/axios_admin'
 import type { User, UserLogin, UserVO } from '@/types/User'
 import type { Result } from '@/types/Result'
 

@@ -1,4 +1,4 @@
-import axios from '@/config/axios'
+import axios from '@/config/axios_admin'
 import type { Result, ResultPage } from '@/types/Result'
 import type { Nav, NavDTO, NavQueryConfig } from '@/types/Nav'
 
@@ -30,4 +30,8 @@ export async function deleteById(id: number) {
 
 export async function update(nav: NavDTO) {
   return (await axios.put<Result<void>>('/nav', nav)).data
+}
+
+export async function multipleDelete(ids: number[]) {
+  return (await axios.delete<Result<void>>('/nav/multiple', { data: { ids } })).data
 }

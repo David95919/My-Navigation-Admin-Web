@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { createTag, getTag } from '@/service/TagService'
+import { createTag, getTag } from '@/service/admin/TagService'
 import type { Tag } from '@/types/Tag'
 
 const props = withDefaults(

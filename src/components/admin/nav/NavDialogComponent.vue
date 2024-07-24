@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import DialogComponent from '@/components/DialogComponent.vue'
+import DialogComponent from '@/components/admin/DialogComponent.vue'
 import { ref } from 'vue'
-import { createNav, getNavById, updateNav } from '@/service/NavService'
+import { createNav, getNavById, updateNav } from '@/service/admin/NavService'
 import type { NavDTO } from '@/types/Nav'
 import { navToNavDTO } from '@/utils/Convert'
-import CategorySelect from '@/components/category/CategorySelect.vue'
-import TagSelect from '@/components/tag/TagSelect.vue'
+import CategorySelect from '@/components/admin/category/CategorySelect.vue'
+import TagSelect from '@/components/admin/tag/TagSelect.vue'
 import { NavFormRule } from '@/utils/Rules'
 
 const emits = defineEmits<{

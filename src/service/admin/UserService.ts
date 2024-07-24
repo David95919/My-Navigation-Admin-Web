@@ -1,4 +1,4 @@
-import { login, get, deleteById, create, getById, update } from '@/api/UserApi'
+import { login, get, deleteById, create, getById, update } from '@/api/admin/UserApi'
 import { confirmDeletion, success } from '@/utils/Message'
 import type { User, UserLogin, UserVO } from '@/types/User'
 import type { Result } from '@/types/Result'

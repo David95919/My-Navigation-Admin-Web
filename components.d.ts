@@ -7,9 +7,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    CategoryDialogComponent: typeof import('./src/components/category/CategoryDialogComponent.vue')['default']
-    CategorySelect: typeof import('./src/components/category/CategorySelect.vue')['default']
-    DialogComponent: typeof import('./src/components/DialogComponent.vue')['default']
+    CategoryDialogComponent: typeof import('./src/components/admin/category/CategoryDialogComponent.vue')['default']
+    CategorySelect: typeof import('./src/components/admin/category/CategorySelect.vue')['default']
+    DialogComponent: typeof import('./src/components/admin/DialogComponent.vue')['default']
     ElAnchorLink: typeof import('element-plus/es')['ElAnchorLink']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -41,13 +41,13 @@ declare module 'vue' {
     IMaterialSymbolsSettings: typeof import('~icons/material-symbols/settings')['default']
     IMaterialSymbolsTagRounded: typeof import('~icons/material-symbols/tag-rounded')['default']
     IMaterialSymbolsUserAttributesOutlineRounded: typeof import('~icons/material-symbols/user-attributes-outline-rounded')['default']
-    NavDialogComponent: typeof import('./src/components/nav/NavDialogComponent.vue')['default']
+    NavDialogComponent: typeof import('./src/components/admin/nav/NavDialogComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SettingsDialogComponent: typeof import('./src/components/SettingsDialogComponent.vue')['default']
-    TagDialogComponent: typeof import('./src/components/tag/TagDialogComponent.vue')['default']
-    TagSelect: typeof import('./src/components/tag/TagSelect.vue')['default']
-    UserDialogComponent: typeof import('./src/components/user/UserDialogComponent.vue')['default']
+    SettingsDialogComponent: typeof import('./src/components/admin/SettingsDialogComponent.vue')['default']
+    TagDialogComponent: typeof import('./src/components/admin/tag/TagDialogComponent.vue')['default']
+    TagSelect: typeof import('./src/components/admin/tag/TagSelect.vue')['default']
+    UserDialogComponent: typeof import('./src/components/admin/user/UserDialogComponent.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

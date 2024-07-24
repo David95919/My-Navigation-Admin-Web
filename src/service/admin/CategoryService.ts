@@ -1,4 +1,4 @@
-import { deleteById, get, create, getById, multipleDelete, update } from '@/api/CategoryApi'
+import { deleteById, get, create, getById, multipleDelete, update } from '@/api/admin/CategoryApi'
 import { confirmDeletion, success } from '@/utils/Message'
 import type { Category } from '@/types/Category'
 

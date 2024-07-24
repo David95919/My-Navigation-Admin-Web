@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { Nav, NavQueryConfig } from '@/types/Nav'
 import { computed, ref } from 'vue'
-import TagSelect from '@/components/tag/TagSelect.vue'
-import CategorySelect from '@/components/category/CategorySelect.vue'
-import { deleteNavById, getNav } from '@/service/NavService'
-import NavDialogComponent from '@/components/nav/NavDialogComponent.vue'
+import TagSelect from '@/components/admin/tag/TagSelect.vue'
+import CategorySelect from '@/components/admin/category/CategorySelect.vue'
+import { deleteNavById, getNav, multipleDeleteNav } from '@/service/admin/NavService'
+import NavDialogComponent from '@/components/admin/nav/NavDialogComponent.vue'
 
 const navDialog = ref<InstanceType<typeof NavDialogComponent> | null>(null)
 const queryConfig = ref<NavQueryConfig>({
@@ -22,6 +22,7 @@ const filterTableData = computed(() =>
 )
 const search = ref('')
 const total = ref(0)
+const multipleSelection = ref<Nav[]>([])
 
 const handleQuery = async () => {
   const page = await getNav(queryConfig.value)
@@ -43,11 +44,18 @@ const handleAdd = () => {
   navDialog.value?.open()
 }
 
-const handleMultipleDelete = () => {}
+const handleMultipleDelete = async () => {
+  await multipleDeleteNav(multipleSelection.value)
+  handleQuery()
+}
 
 const handleDelete = async (id: number) => {
   await deleteNavById(id)
   handleQuery()
+}
+
+const handleSelectionChange = (value: Nav[]) => {
+  multipleSelection.value = value
 }
 
 handleQuery()
@@ -74,14 +82,15 @@ handleQuery()
             </el-form-item>
           </el-form>
           <el-button plain @click="handleAdd">{{ $t('other.add') }}</el-button>
-          <el-button disabled plain type="danger" @click="handleMultipleDelete"
+          <el-button plain type="danger" @click="handleMultipleDelete"
             >{{ $t('other.delete') }}
           </el-button>
         </div>
       </div>
     </template>
     <template #default>
-      <el-table :data="filterTableData">
+      <el-table :data="filterTableData" @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="id" label="id"></el-table-column>
         <el-table-column prop="name" :label="$t('other.name')"></el-table-column>
         <el-table-column prop="url" :label="$t('nav.url')">
@@ -93,9 +102,9 @@ handleQuery()
               :show-arrow="false"
             >
               <template #reference>
-                <el-link class="url" :href="scope.row.url" target="_blank">{{
-                  scope.row.url
-                }}</el-link>
+                <el-link class="url" :href="scope.row.url" target="_blank"
+                  >{{ scope.row.url }}
+                </el-link>
               </template>
             </el-popover>
           </template>
@@ -120,7 +129,7 @@ handleQuery()
             <el-input v-model="search" size="small" :placeholder="$t('other.search')" />
           </template>
           <template #default="scope">
-            <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }} </el-button>
+            <el-button plain @click="handleEdit(scope.row.id)">{{ $t('other.edit') }}</el-button>
             <el-button type="danger" plain @click="handleDelete(scope.row.id)"
               >{{ $t('other.delete') }}
             </el-button>

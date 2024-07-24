@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Category } from '@/types/Category'
-import { createCategory, getCategory } from '@/service/CategoryService'
+import { createCategory, getCategory } from '@/service/admin/CategoryService'
 
 const props = withDefaults(
   defineProps<{

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import DialogComponent from '@/components/DialogComponent.vue'
+import DialogComponent from '@/components/admin/DialogComponent.vue'
 import { ref } from 'vue'
-import { createUser, getUserById, updateUser } from '@/service/UserService'
+import { createUser, getUserById, updateUser } from '@/service/admin/UserService'
 import { UserFormRule } from '@/utils/Rules'
 
 const emits = defineEmits<{

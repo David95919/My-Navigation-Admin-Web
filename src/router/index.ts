@@ -16,37 +16,37 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/LoginViews.vue')
+      component: () => import('@/views/admin/LoginViews.vue')
     },
     {
-      path: '/manage',
-      name: 'manage',
-      component: () => import('@/views/ManageContainer.vue'),
+      path: '/admin',
+      name: 'admin',
+      component: () => import('@/views/admin/ManageContainer.vue'),
       children: [
         {
-          path: '/home',
+          path: '/admin/home',
           name: 'home',
-          component: () => import('@/views/nav/HomeViews.vue')
+          component: () => import('@/views/admin/nav/HomeViews.vue')
         },
         {
-          path: '/navigation',
+          path: '/admin/navigation',
           name: 'navigation',
-          component: () => import('@/views/nav/NavViews.vue')
+          component: () => import('@/views/admin/nav/NavViews.vue')
         },
         {
-          path: '/category',
+          path: '/admin/category',
           name: 'category',
-          component: () => import('@/views/nav/CategoryViews.vue')
+          component: () => import('@/views/admin/nav/CategoryViews.vue')
         },
         {
-          path: '/tag',
+          path: '/admin/tag',
           name: 'tag',
-          component: () => import('@/views/nav/TagViews.vue')
+          component: () => import('@/views/admin/nav/TagViews.vue')
         },
         {
-          path: '/user',
+          path: '/admin/user',
           name: 'user',
-          component: () => import('@/views/nav/UserViews.vue')
+          component: () => import('@/views/admin/nav/UserViews.vue')
         }
       ]
     }
