@@ -60,5 +60,45 @@ export default {
     about: 'About',
     author: 'Author',
     version: 'Version'
+  },
+  rules: {
+    commons: {
+      name: {
+        required: 'Please input name'
+      },
+      select: {
+        required: 'Please select'
+      }
+    },
+    nav: {
+      name: {
+        length: 'Length should be 3 to 24'
+      },
+      url: {
+        required: 'Please enter the URL',
+        length: 'Length should be 9 to 120',
+        is_url: 'Please enter the correct URL'
+      }
+    },
+    category: {
+      name: {
+        length: 'Length should be 2 to 24'
+      }
+    },
+    tag: {
+      name: {
+        length: 'Length should be 2 to 24'
+      }
+    },
+    user: {
+      username: {
+        required: 'Please enter the Username',
+        length: 'Length should be 6 to 24'
+      },
+      password: {
+        required: 'Please enter the Password',
+        length: 'Length should be 6 to 24'
+      }
+    }
   }
 }

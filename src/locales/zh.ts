@@ -60,5 +60,45 @@ export default {
     about: '关于',
     author: '作者',
     version: '版本'
+  },
+  rules: {
+    commons: {
+      name: {
+        required: '请输入名字'
+      },
+      select: {
+        required: '请选择'
+      }
+    },
+    nav: {
+      name: {
+        length: '长度应为 3 至 24'
+      },
+      url: {
+        required: '请输入网址',
+        length: '长度应为 9 至 120',
+        is_url: '请输入正确的网址'
+      }
+    },
+    category: {
+      name: {
+        length: '长度应为 2 至 24'
+      }
+    },
+    tag: {
+      name: {
+        length: '长度应为 2 至 24'
+      }
+    },
+    user: {
+      username: {
+        required: '请输入用户名',
+        length: '长度应为 6 至 24'
+      },
+      password: {
+        required: '请输入密码',
+        length: '长度应为 6 至 24'
+      }
+    }
   }
 }

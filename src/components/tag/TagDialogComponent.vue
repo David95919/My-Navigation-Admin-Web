@@ -2,6 +2,7 @@
 import DialogComponent from '@/components/DialogComponent.vue'
 import { ref } from 'vue'
 import { createTag, getTagById, updateTag } from '@/service/TagService'
+import { TagFormRule } from '@/utils/Rules'
 
 const emits = defineEmits<{
   confirm: []
@@ -50,8 +51,8 @@ defineExpose({
     :title="isAdd ? $t('other.add') : $t('other.edit')"
     @confirm="confirm"
   >
-    <el-form :model="form">
-      <el-form-item :label="$t('other.name')">
+    <el-form :model="form" :rules="TagFormRule">
+      <el-form-item :label="$t('other.name')" prop="name">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
     </el-form>

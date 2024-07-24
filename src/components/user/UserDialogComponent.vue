@@ -2,6 +2,7 @@
 import DialogComponent from '@/components/DialogComponent.vue'
 import { ref } from 'vue'
 import { createUser, getUserById, updateUser } from '@/service/UserService'
+import { UserFormRule } from '@/utils/Rules'
 
 const emits = defineEmits<{
   confirm: []
@@ -58,11 +59,11 @@ defineExpose({
     :title="isAdd ? $t('other.add') : $t('other.edit')"
     @confirm="confirm"
   >
-    <el-form :model="form">
-      <el-form-item :label="$t('user.username')">
+    <el-form :model="form" :rules="UserFormRule">
+      <el-form-item :label="$t('user.username')" prop="username">
         <el-input v-model="form.username"></el-input>
       </el-form-item>
-      <el-form-item :label="$t('user.password')">
+      <el-form-item :label="$t('user.password')" prop="password">
         <el-input v-model="form.password"></el-input>
       </el-form-item>
     </el-form>

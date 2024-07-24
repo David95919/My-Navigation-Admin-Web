@@ -6,6 +6,7 @@ import type { NavDTO } from '@/types/Nav'
 import { navToNavDTO } from '@/utils/Convert'
 import CategorySelect from '@/components/category/CategorySelect.vue'
 import TagSelect from '@/components/tag/TagSelect.vue'
+import { NavFormRule } from '@/utils/Rules'
 
 const emits = defineEmits<{
   confirm: []
@@ -62,11 +63,11 @@ defineExpose({
     :title="isAdd ? $t('other.add') : $t('other.edit')"
     @confirm="confirm"
   >
-    <el-form :model="form">
-      <el-form-item :label="$t('other.name')">
+    <el-form :model="form" :rules="NavFormRule">
+      <el-form-item :label="$t('other.name')" prop="name">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item :label="$t('nav.url')">
+      <el-form-item :label="$t('nav.url')" prop="url">
         <el-input v-model="form.url"></el-input>
       </el-form-item>
       <el-form-item :label="$t('nav.description')">
@@ -75,7 +76,7 @@ defineExpose({
       <el-form-item :label="$t('manage.tag')">
         <TagSelect v-model="form.tags" width="100%" :maxShowTags="5"></TagSelect>
       </el-form-item>
-      <el-form-item :label="$t('manage.category')">
+      <el-form-item :label="$t('manage.category')" prop="category">
         <CategorySelect v-model="form.category" width="100%"></CategorySelect>
       </el-form-item>
     </el-form>
