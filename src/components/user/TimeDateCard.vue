@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
+import { dayjs } from 'element-plus'
+import i18n from '@/locales'
 
 const isDark = ref(useDark())
 const time = ref<{
@@ -13,6 +15,10 @@ const time = ref<{
   seconds: '00'
 })
 
+const date = dayjs()
+
+i18n.global.locale
+
 setInterval(() => {
   const now = new Date()
   time.value.hours = now.getHours().toString()
@@ -22,7 +28,11 @@ setInterval(() => {
 </script>
 <template>
   <el-card class="time-card" shadow="always" body-class="time-card-body">
-    <div class="date">date</div>
+    <div class="date">
+      <div class="date">{{ date.date() }}</div>
+      <div class="day">{{ `${$t('date_time.day')} ${date.day()}` }}</div>
+      <div class="year-month">{{ `${date.year()}${$t('date_time.year')} ${date.month() + 1}${$t('date_time.month')}` }}</div>
+    </div>
     <div class="time">{{ `${time.hours}:${time.minutes}:${time.seconds}` }}</div>
     <div class="weather">weather</div>
   </el-card>
@@ -33,13 +43,18 @@ setInterval(() => {
   margin: 0 auto;
 
   :deep(.time-card-body) {
-    height: 100px;
     display: flex;
+    height: 100px;
     padding: 10px;
   }
 
   .date {
     width: 10vw;
+    font-size: 0.9em;
+    text-align: center;
+    .date {
+      font-size: 1.8em;
+    }
   }
 
   .time {

@@ -100,5 +100,10 @@ export default {
         length: 'Length should be 6 to 24'
       }
     }
+  },
+  date_time: {
+    day: 'Day',
+    year: 'Year',
+    month: 'Month'
   }
 }

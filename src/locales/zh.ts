@@ -100,5 +100,10 @@ export default {
         length: '长度应为 6 至 24'
       }
     }
+  },
+  date_time: {
+    day: '星期',
+    year: '年',
+    month: '月'
   }
 }
