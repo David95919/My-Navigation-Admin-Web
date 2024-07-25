@@ -8,7 +8,7 @@ import { useUserStore } from '@/stores/userStore'
 import { useRouter } from 'vue-router'
 
 const instance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: import.meta.env.VITE_API_URL + '/admin/'
 })
 
 //请求拦截器

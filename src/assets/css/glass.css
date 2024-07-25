@@ -3,3 +3,8 @@
   background-color: var(--my-color) !important;
   backdrop-filter: var(--my-blur) !important;
 }
+
+#app {
+  background-image: var(--my-background-image);
+  background-size: 100% 100%;
+}

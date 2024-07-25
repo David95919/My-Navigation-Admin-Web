@@ -14,6 +14,11 @@ const router = createRouter({
       redirect: '/home'
     },
     {
+      path: '/home',
+      name: 'home',
+      component: () => import('@/views/user/nav/Home.vue')
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('@/views/admin/LoginViews.vue')
@@ -25,27 +30,27 @@ const router = createRouter({
       children: [
         {
           path: '/admin/home',
-          name: 'home',
+          name: 'adminHome',
           component: () => import('@/views/admin/nav/HomeViews.vue')
         },
         {
           path: '/admin/navigation',
-          name: 'navigation',
+          name: 'adminNav',
           component: () => import('@/views/admin/nav/NavViews.vue')
         },
         {
           path: '/admin/category',
-          name: 'category',
+          name: 'adminCategory',
           component: () => import('@/views/admin/nav/CategoryViews.vue')
         },
         {
           path: '/admin/tag',
-          name: 'tag',
+          name: 'adminTag',
           component: () => import('@/views/admin/nav/TagViews.vue')
         },
         {
           path: '/admin/user',
-          name: 'user',
+          name: 'adminUser',
           component: () => import('@/views/admin/nav/UserViews.vue')
         }
       ]

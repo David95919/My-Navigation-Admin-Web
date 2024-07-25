@@ -7,31 +7,26 @@ import { useDark } from '@vueuse/core'
 
 const { isGlass, background, blurLevel } = storeToRefs(settingsStore())
 const isDark = ref(useDark())
-const containerBackground = ref(`url(${background.value})`)
 
-const setMyColor = () => {
+const setCss = () => {
   document.documentElement.style.setProperty(
     '--my-color',
     isGlass.value ? 'rgba(0, 0, 0, 0.2)' : isDark.value ? '#1d1e1f' : '#ffffff'
   )
-}
-
-const setMyBlur = () => {
   document.documentElement.style.setProperty(
     '--my-blur',
     isGlass.value ? `blur(${blurLevel.value}px)` : isDark.value ? '#1d1e1f' : '#ffffff'
   )
+  document.documentElement.style.setProperty('--my-background-image', `url(${background.value})`)
 }
 
 onMounted(async () => {
   await import('./assets/css/glass.css')
-  setMyColor()
-  setMyBlur()
+  setCss()
 })
 
-watch([blurLevel, isGlass, isDark], () => {
-  setMyColor()
-  setMyBlur()
+watch([blurLevel, isGlass, isDark, background], () => {
+  setCss()
 })
 </script>
 <template>
@@ -48,6 +43,7 @@ watch([blurLevel, isGlass, isDark], () => {
   --el-color-primary-light-9: @color !important;
   --my-blur: #1d1e1f;
   --my-color: #1d1e1f;
+  --my-background-image: none;
 }
 </style>
 <style>
@@ -60,10 +56,5 @@ watch([blurLevel, isGlass, isDark], () => {
   backdrop-filter: v-bind(
     "isGlass ? `blur(${blurLevel}px)` : isDark? '#1d1e1f' : '#ffffff'"
   ) !important;
-}
-
-.el-container {
-  background-image: v-bind(containerBackground);
-  background-size: 100% 100%;
 }
 </style>

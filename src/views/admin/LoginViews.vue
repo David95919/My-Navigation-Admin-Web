@@ -50,7 +50,7 @@ const handleLogin = async () => {
     if (route.query.redirect) {
       router.push({ name: route.query.redirect.toString() })
     } else {
-      router.push({ path: '/' })
+      router.push({ path: '/admin/home' })
     }
   }
 }

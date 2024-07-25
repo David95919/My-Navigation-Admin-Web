@@ -13,7 +13,7 @@ const handleOpenSettings = () => {
 <template>
   <el-container class="common-layout">
     <el-card class="aside-card" shadow="always">
-      <el-aside class="aside">
+      <el-aside class="aside" style="width: auto">
         <el-menu class="menu" :default-active="route.path" router collapse-transition>
           <el-menu-item index="/admin/home">
             <el-icon>
@@ -73,6 +73,9 @@ const handleOpenSettings = () => {
   height: 100vh;
 
   .aside-card {
+    width: 12vw;
+    max-width: 12vw;
+    min-width: 130px;
     margin: 10px 0 10px 10px;
 
     .aside {

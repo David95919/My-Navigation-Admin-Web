@@ -6,7 +6,7 @@ import axios, {
 import { warning } from '@/utils/Message'
 
 const instance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: import.meta.env.VITE_API_URL + '/user/'
 })
 
 //请求拦截器
