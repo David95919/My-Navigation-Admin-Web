@@ -2,9 +2,13 @@
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import { dayjs } from 'element-plus'
+import type { NowWeather } from '@/types/Weather'
+import { getNowWeather } from '@/service/user/WeatherService'
+import { useUserStore } from '@/stores/userStore'
 
 const isDark = ref(useDark())
 
+const weather = ref<NowWeather>()
 const time = ref<{
   hours: string
   minutes: string
@@ -23,6 +27,12 @@ setInterval(() => {
   time.value.minutes = now.getMinutes().toString()
   time.value.seconds = now.getSeconds().toString()
 }, 1000)
+
+const getWeather = async () => {
+  weather.value = await getNowWeather(useUserStore().weatherId)
+}
+
+getWeather()
 </script>
 <template>
   <el-card class="time-card" shadow="always" body-class="time-card-body">
@@ -34,7 +44,21 @@ setInterval(() => {
       </div>
     </div>
     <div class="time">{{ `${time.hours}:${time.minutes}:${time.seconds}` }}</div>
-    <div class="weather">weather</div>
+    <a
+      class="weather"
+      href="https://www.qweather.com/"
+      target="_blank"
+      title="天气服务由和风天气驱动"
+    >
+      <div class="left">
+        <span class="feelsLike">{{ weather?.now.feelsLike }}°</span>
+        <span class="temp">{{ weather?.now.temp }}°</span>
+      </div>
+      <div class="right">
+        <i class="icon" :class="[`qi-${weather?.now.icon}`]"></i>
+        <span class="text">{{ weather?.now.text }}</span>
+      </div>
+    </a>
   </el-card>
 </template>
 <style scoped lang="less">
@@ -66,7 +90,7 @@ setInterval(() => {
     font-size: 3.8em;
 
     .separate {
-      content: '';  
+      content: '';
       position: absolute;
       top: 50%;
       width: 2px;
@@ -87,7 +111,34 @@ setInterval(() => {
   }
 
   .weather {
+    margin-left: 10px;
+    display: flex;
     width: 10vw;
+    justify-content: space-around;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .temp {
+        font-size: 1.3em;
+      }
+
+      .feelsLike {
+        font-size: 2em;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .icon {
+        font-size: 2em;
+      }
+    }
   }
 }
 </style>
