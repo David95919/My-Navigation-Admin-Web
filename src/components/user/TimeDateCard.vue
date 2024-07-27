@@ -45,8 +45,9 @@ getWeather()
     </div>
     <div class="time">{{ `${time.hours}:${time.minutes}:${time.seconds}` }}</div>
     <a
+      v-if="weather != null"
       class="weather"
-      href="https://www.qweather.com/"
+      :href="weather?.fxLink"
       target="_blank"
       title="天气服务由和风天气驱动"
     >
@@ -59,6 +60,7 @@ getWeather()
         <span class="text">{{ weather?.now.text }}</span>
       </div>
     </a>
+    <div class="weather" v-else>未开启天气</div>
   </el-card>
 </template>
 <style scoped lang="less">
