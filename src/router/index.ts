@@ -58,15 +58,12 @@ const router = createRouter({
   ]
 })
 
-const publicPathList: string[] = ['/login']
-
 // 导航守卫
 router.beforeEach((to) => {
-  //是否是公开页面
-  if (publicPathList.includes(to.path)) return true
+  if (!to.path.startsWith('/admin')) return true
 
-  const refs = storeToRefs(useUserStore())
-  if (refs.token.value || refs.temp_token.value) {
+  const { token, temp_token } = useUserStore()
+  if (token || temp_token) {
     return true
   } else {
     //未登录
