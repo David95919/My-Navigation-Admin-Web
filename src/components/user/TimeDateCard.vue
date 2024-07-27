@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import { dayjs } from 'element-plus'
-import i18n from '@/locales'
 
 const isDark = ref(useDark())
+
 const time = ref<{
   hours: string
   minutes: string
@@ -16,8 +16,6 @@ const time = ref<{
 })
 
 const date = dayjs()
-
-i18n.global.locale
 
 setInterval(() => {
   const now = new Date()
@@ -31,7 +29,9 @@ setInterval(() => {
     <div class="date">
       <div class="date">{{ date.date() }}</div>
       <div class="day">{{ `${$t('date_time.day')} ${date.day()}` }}</div>
-      <div class="year-month">{{ `${date.year()}${$t('date_time.year')} ${date.month() + 1}${$t('date_time.month')}` }}</div>
+      <div class="year-month">
+        {{ `${date.year()}${$t('date_time.year')} ${date.month() + 1}${$t('date_time.month')}` }}
+      </div>
     </div>
     <div class="time">{{ `${time.hours}:${time.minutes}:${time.seconds}` }}</div>
     <div class="weather">weather</div>
@@ -52,6 +52,7 @@ setInterval(() => {
     width: 10vw;
     font-size: 0.9em;
     text-align: center;
+
     .date {
       font-size: 1.8em;
     }
@@ -65,7 +66,7 @@ setInterval(() => {
     font-size: 3.8em;
 
     .separate {
-      content: '';
+      content: '';  
       position: absolute;
       top: 50%;
       width: 2px;

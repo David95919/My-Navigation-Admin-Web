@@ -4,6 +4,7 @@ import { settingsStore } from '@/stores/settingsStore'
 import { storeToRefs } from 'pinia'
 import { ref, onMounted, watch } from 'vue'
 import { useDark } from '@vueuse/core'
+import { checkWeatherService } from '@/service/user/OtherService'
 
 const { isGlass, background, blurLevel } = storeToRefs(settingsStore())
 const isDark = ref(useDark())
@@ -28,6 +29,8 @@ onMounted(async () => {
 watch([blurLevel, isGlass, isDark, background], () => {
   setCss()
 })
+
+checkWeatherService()
 </script>
 <template>
   <router-view></router-view>

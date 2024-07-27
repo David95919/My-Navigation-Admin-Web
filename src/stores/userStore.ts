@@ -1,6 +1,7 @@
 import { ref, type Ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { User } from '@/types/User'
+import type { Address } from '@/types/Other'
 
 export const useUserStore = defineStore(
   'userStore',
@@ -24,11 +25,14 @@ export const useUserStore = defineStore(
       return token.value || temp_token.value
     }
 
-    return { user, token, signOut, temp_token, isLogin }
+    const address = ref<Address>({ city: '', area: '' })
+    const weatherId = ref('')
+
+    return { user, token, signOut, temp_token, isLogin, address, weatherId }
   },
   {
     persist: {
-      paths: ['user', 'token']
+      paths: ['user', 'token', 'address', 'weatherId']
     }
   }
 )
