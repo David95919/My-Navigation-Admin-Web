@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import TimeDateCard from '@/components/user/TimeDateCard.vue'
+import TimeDateCard from '@/components/user/TimeDateCardComponent.vue'
+import SearchComponent from '@/components/user/SearchComponent.vue'
 </script>
 <template>
   <div class="home">
     <div class="top">
       <TimeDateCard></TimeDateCard>
     </div>
-    <div class="search">Search</div>
+    <div class="search">
+      <SearchComponent></SearchComponent>
+    </div>
     <div class="choose">Choose</div>
     <div class="nav">Nav</div>
   </div>
@@ -21,7 +24,7 @@ import TimeDateCard from '@/components/user/TimeDateCard.vue'
   }
 
   .search {
-    background-color: gold;
+    margin: 0 auto;
   }
 
   .choose {

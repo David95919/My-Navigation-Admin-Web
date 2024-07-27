@@ -44,10 +44,12 @@ declare module 'vue' {
     NavDialogComponent: typeof import('./src/components/admin/nav/NavDialogComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchComponent: typeof import('./src/components/user/SearchComponent.vue')['default']
     SettingsDialogComponent: typeof import('./src/components/admin/SettingsDialogComponent.vue')['default']
     TagDialogComponent: typeof import('./src/components/admin/tag/TagDialogComponent.vue')['default']
     TagSelect: typeof import('./src/components/admin/tag/TagSelect.vue')['default']
     TimeDateCard: typeof import('./src/components/user/TimeDateCard.vue')['default']
+    TimeDateCardComponent: typeof import('./src/components/user/TimeDateCardComponent.vue')['default']
     UserDialogComponent: typeof import('./src/components/admin/user/UserDialogComponent.vue')['default']
   }
   export interface ComponentCustomProperties {
