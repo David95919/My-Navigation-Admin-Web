@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
 import { getCategory } from '@/service/user/CategoryService'
 import type { Category } from '@/types/Category'
+import NavListComponent from '@/components/user/NavListComponent.vue'
 
 const activeName = ref('first')
 const categoryList = ref<Category[]>()
@@ -13,7 +14,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 
 const getCategoryList = async () => {
   categoryList.value = await getCategory()
-  console.log(categoryList.value)
+  if (categoryList.value?.length >= 1) activeName.value = categoryList.value[0].name
 }
 
 getCategoryList()
@@ -24,10 +25,11 @@ getCategoryList()
       <el-tab-pane
         v-for="category in categoryList"
         :label="category.name"
-        :name="category.id"
+        :name="category.name"
         :key="category.id"
+        lazy
       >
-        {{ category.name}}
+        <NavListComponent :category-id="category.id"></NavListComponent>
       </el-tab-pane>
     </el-tabs>
   </el-card>

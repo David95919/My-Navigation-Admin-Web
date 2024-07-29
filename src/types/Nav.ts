@@ -9,6 +9,12 @@ export type NavQueryConfig = {
   size: number
 }
 
+export type NavUserQueryConfig = {
+  category: number
+  current: number
+  size: number
+}
+
 export type Nav = {
   id: number
   name: string
