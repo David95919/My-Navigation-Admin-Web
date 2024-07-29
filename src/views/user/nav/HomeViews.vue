@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import TimeDateCard from '@/components/user/TimeDateCardComponent.vue'
+import TimeDateCardComponent from '@/components/user/TimeDateCardComponent.vue'
 import SearchComponent from '@/components/user/SearchComponent.vue'
+import NavComponent from '@/components/user/NavComponent.vue'
 </script>
 <template>
   <div class="home">
     <div class="top">
-      <TimeDateCard></TimeDateCard>
+      <TimeDateCardComponent></TimeDateCardComponent>
     </div>
     <div class="search">
       <SearchComponent></SearchComponent>
     </div>
-    <div class="choose">Choose</div>
-    <div class="nav">Nav</div>
+    <div class="nav">
+      <NavComponent></NavComponent>
+    </div>
   </div>
 </template>
 <style scoped lang="less">
@@ -27,12 +29,9 @@ import SearchComponent from '@/components/user/SearchComponent.vue'
     margin: 0 auto;
   }
 
-  .choose {
-    background-color: skyblue;
-  }
-
   .nav {
-    background-color: greenyellow;
+    margin: 10px auto 0;
+    width: 85vw;
   }
 }
 </style>
