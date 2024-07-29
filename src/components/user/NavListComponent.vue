@@ -24,7 +24,7 @@ getNavList()
 </script>
 <template>
   <div class="manage">
-    <el-card v-for="nav in navList?.records" class="item">
+    <el-card v-for="nav in navList?.records" class="item" :key="nav.id">
       <el-avatar class="icon" :src="iconUrl + nav.url" :size="24"></el-avatar>
       <el-link :href="nav.url" target="_blank">{{ nav.name }}</el-link>
     </el-card>
