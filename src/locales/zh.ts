@@ -105,5 +105,10 @@ export default {
     day: '星期',
     year: '年',
     month: '月'
+  },
+  home: {
+    weather_is_not_enabled: '未开启天气',
+    weather_services: '天气服务由和风天气驱动',
+    no_website: '没有网站'
   }
 }

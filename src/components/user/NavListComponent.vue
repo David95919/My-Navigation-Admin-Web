@@ -3,9 +3,11 @@ import { ref, watch } from 'vue'
 import { getNav } from '@/service/user/NavService'
 import type { ResultPage } from '@/types/Result'
 import type { Nav } from '@/types/Nav'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const props = defineProps<{ categoryId: number }>()
-const navList = ref<ResultPage<Nav[]>>()
+const navList = ref<ResultPage<Nav[]>>({ code: 0, msg: '', total: 0, records: [] })
 const iconUrl =
   'https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url='
 
@@ -24,7 +26,13 @@ getNavList()
 </script>
 <template>
   <div class="manage">
-    <el-card class="item" v-for="nav in navList?.records" :key="nav.id" shadow="hover">
+    <el-card
+      class="item"
+      v-for="nav in navList?.records"
+      :key="nav.id"
+      shadow="hover"
+      v-if="navList?.records.length >= 1"
+    >
       <a class="nav" :href="nav.url" target="_blank">
         <el-avatar class="icon" :src="iconUrl + nav.url" :size="24"></el-avatar>
         <span>{{ nav.name }}</span>
@@ -36,12 +44,17 @@ getNavList()
         </el-tag>
       </div>
     </el-card>
+    <el-empty class="empty" v-else :description="t('home.no_website')" />
   </div>
 </template>
 <style scoped lang="less">
 .manage {
   display: flex;
   flex-wrap: wrap;
+
+  .empty {
+    width: 100%;
+  }
 
   :deep(.item.is-hover-shadow:hover) {
     box-shadow: 0 0 12px rgba(95, 16, 210, 0.41);

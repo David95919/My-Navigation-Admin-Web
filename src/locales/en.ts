@@ -105,5 +105,10 @@ export default {
     day: 'Day',
     year: 'Year',
     month: 'Month'
+  },
+  home: {
+    weather_is_not_enabled: 'Weather is not enabled',
+    weather_services: 'Weather services are powered by QWeather',
+    no_website: 'No website'
   }
 }

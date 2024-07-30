@@ -5,8 +5,10 @@ import { dayjs } from 'element-plus'
 import type { NowWeather } from '@/types/Weather'
 import { getNowWeather } from '@/service/user/WeatherService'
 import { useUserStore } from '@/stores/userStore'
+import { useI18n } from 'vue-i18n'
 
 const isDark = ref(useDark())
+const { t } = useI18n()
 
 const weather = ref<NowWeather>()
 const time = ref<{
@@ -49,7 +51,7 @@ getWeather()
       class="weather"
       :href="weather?.fxLink"
       target="_blank"
-      title="天气服务由和风天气驱动"
+      :title="t('home.weather_services')"
     >
       <div class="left">
         <span class="feelsLike">{{ weather?.now.feelsLike }}°</span>
@@ -60,7 +62,7 @@ getWeather()
         <span class="text">{{ weather?.now.text }}</span>
       </div>
     </a>
-    <div class="weather" v-else>未开启天气</div>
+    <div class="weather" v-else>{{ $t('home.weather_is_not_enabled') }}</div>
   </el-card>
 </template>
 <style scoped lang="less">
