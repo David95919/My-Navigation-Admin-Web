@@ -25,14 +25,8 @@ const getNavList = async () => {
 getNavList()
 </script>
 <template>
-  <div class="manage">
-    <el-card
-      class="item"
-      v-for="nav in navList?.records"
-      :key="nav.id"
-      shadow="hover"
-      v-if="navList?.records.length >= 1"
-    >
+  <div class="manage" v-if="navList?.records.length >= 1">
+    <el-card class="item" v-for="nav in navList?.records" :key="nav.id" shadow="hover">
       <a class="nav" :href="nav.url" target="_blank">
         <el-avatar class="icon" :src="iconUrl + nav.url" :size="24"></el-avatar>
         <span>{{ nav.name }}</span>
@@ -44,8 +38,8 @@ getNavList()
         </el-tag>
       </div>
     </el-card>
-    <el-empty class="empty" v-else :description="t('home.no_website')" />
   </div>
+  <el-empty class="empty" v-else :description="t('home.no_website')" />
 </template>
 <style scoped lang="less">
 .manage {
