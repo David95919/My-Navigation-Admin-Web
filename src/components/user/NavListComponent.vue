@@ -24,9 +24,17 @@ getNavList()
 </script>
 <template>
   <div class="manage">
-    <el-card v-for="nav in navList?.records" class="item" :key="nav.id">
-      <el-avatar class="icon" :src="iconUrl + nav.url" :size="24"></el-avatar>
-      <el-link :href="nav.url" target="_blank">{{ nav.name }}</el-link>
+    <el-card class="item" v-for="nav in navList?.records" :key="nav.id" shadow="hover">
+      <a class="nav" :href="nav.url" target="_blank">
+        <el-avatar class="icon" :src="iconUrl + nav.url" :size="24"></el-avatar>
+        <span>{{ nav.name }}</span>
+      </a>
+      <div class="description" v-if="nav.description.length >= 1">{{ nav.description }}</div>
+      <div class="tags" v-if="nav.tags.length >= 1">
+        <el-tag type="primary" v-for="tag in nav.tags" :key="tag.id" class="tag"
+          >{{ tag.name }}
+        </el-tag>
+      </div>
     </el-card>
   </div>
 </template>
@@ -35,21 +43,48 @@ getNavList()
   display: flex;
   flex-wrap: wrap;
 
+  :deep(.item.is-hover-shadow:hover) {
+    box-shadow: 0 0 12px rgba(95, 16, 210, 0.41);
+  }
+
   :deep(.item) {
     display: flex;
     margin: 10px;
-    width: 10vw;
+    width: 15vw;
+    height: 100px;
 
     .el-card__body {
       display: flex;
+      flex-direction: column;
       padding: 10px;
-      justify-content: center;
+      justify-content: space-around;
       align-content: center;
       width: 100%;
       height: 100%;
 
-      .icon {
-        margin: auto 5px auto 0;
+      .nav {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        .icon {
+          margin: auto 5px auto 0;
+        }
+      }
+
+      .description {
+        font-size: 0.9em;
+        text-align: center;
+      }
+
+      .tags {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+
+        .tag {
+          cursor: pointer;
+        }
       }
 
       :deep(.el-link__inner) {

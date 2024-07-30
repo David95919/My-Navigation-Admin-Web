@@ -90,8 +90,6 @@ const handleLogin = async () => {
   width: 40vw;
   padding: 1vw 5vw;
 
-
-
   .title {
     display: block;
     font-size: 36px;
@@ -104,7 +102,7 @@ const handleLogin = async () => {
 }
 
 .main {
-  overflow-y:hidden;
+  overflow-y: hidden;
   height: 100vh;
 }
 </style>
