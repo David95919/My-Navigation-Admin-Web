@@ -85,10 +85,12 @@ const handleLogin = async () => {
 </template>
 <style scoped lang="less">
 .central {
-  box-sizing: border-box;
   margin: 25vh auto;
+  box-sizing: border-box;
   width: 40vw;
   padding: 1vw 5vw;
+
+
 
   .title {
     display: block;
@@ -102,6 +104,7 @@ const handleLogin = async () => {
 }
 
 .main {
+  overflow-y:hidden;
   height: 100vh;
 }
 </style>
