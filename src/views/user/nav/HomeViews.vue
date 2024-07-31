@@ -16,9 +16,7 @@ const handleOpenSettings = () => {
     <div class="top">
       <TimeDateCardComponent></TimeDateCardComponent>
     </div>
-    <div class="search">
-      <SearchComponent></SearchComponent>
-    </div>
+    <SearchComponent class="search"></SearchComponent>
     <div class="nav">
       <NavComponent></NavComponent>
     </div>
@@ -38,11 +36,10 @@ const handleOpenSettings = () => {
   height: 100vh;
 
   .top {
-    padding: 25px 0;
+    padding: 10px 0;
   }
 
   .search {
-    margin: 0 auto;
   }
 
   .nav {

@@ -65,7 +65,6 @@ defineExpose({
         </el-select>
       </el-form-item>
       <el-form-item :label="$t('other.other')">
-        <el-button @click="signOut" :disabled="!isLogin()">{{ $t('settings.sign_out') }}</el-button>
         <el-popover hide-after="650" trigger="hover" placement="top" :width="300">
           <template #reference>
             <el-button>{{ $t('settings.about') }}</el-button>
@@ -76,13 +75,14 @@ defineExpose({
               <el-link href="https://github.com/David95919" target="_blank">David95919</el-link>
             </p>
             <el-link href="https://github.com/David95919/My-Navigation-Admin" target="_blank"
-              >My-Navigation-Admin
+            >My-Navigation-Admin
             </el-link>
             <el-link href="https://github.com/David95919/My-Navigation-Admin-Web" target="_blank">
               My-Navigation-Admin-Web
             </el-link>
           </template>
         </el-popover>
+        <el-button @click="signOut" v-show="isLogin()">{{ $t('settings.sign_out') }}</el-button>
       </el-form-item>
     </el-form>
   </DialogComponent>
