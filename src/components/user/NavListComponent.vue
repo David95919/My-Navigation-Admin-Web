@@ -31,10 +31,12 @@ getNavList()
         <el-avatar class="icon" :src="iconUrl + nav.url" :size="24"></el-avatar>
         <span>{{ nav.name }}</span>
       </a>
-      <div class="description" v-if="nav.description.length >= 1">{{ nav.description }}</div>
+      <div class="description" v-if="nav.description.length >= 1">
+        {{ nav.description }}
+      </div>
       <div class="tags" v-if="nav.tags.length >= 1">
-        <el-tag type="primary" v-for="tag in nav.tags" :key="tag.id" class="tag"
-          >{{ tag.name }}
+        <el-tag type="primary" v-for="tag in nav.tags" :key="tag.id" class="tag">
+          {{ tag.name }}
         </el-tag>
       </div>
     </el-card>

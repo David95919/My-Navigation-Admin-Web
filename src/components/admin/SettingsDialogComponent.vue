@@ -65,7 +65,7 @@ defineExpose({
         </el-select>
       </el-form-item>
       <el-form-item :label="$t('other.other')">
-        <el-button @click="signOut" :disabled="!isLogin">{{ $t('settings.sign_out') }}</el-button>
+        <el-button @click="signOut" :disabled="!isLogin()">{{ $t('settings.sign_out') }}</el-button>
         <el-popover hide-after="650" trigger="hover" placement="top" :width="300">
           <template #reference>
             <el-button>{{ $t('settings.about') }}</el-button>

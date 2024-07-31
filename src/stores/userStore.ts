@@ -22,7 +22,7 @@ export const useUserStore = defineStore(
     }
 
     const isLogin = () => {
-      return token.value || temp_token.value
+      return token.value.length >= 1 || temp_token.value.length >= 1
     }
 
     const address = ref<Address>({ city: '', area: '' })
