@@ -1,15 +1,30 @@
 <script setup lang="ts">
-import { Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import type { SearchCategoryShow } from '@/types/SearchCategory'
 import { getSearchCategory } from '@/service/user/SearchCategoryService'
 import { searchCategoryToSearchCategoryShowArray } from '@/utils/Convert'
 import { getSearch } from '@/service/user/SearchService'
+import { Search as SearchIcon } from '@element-plus/icons-vue'
+import type { Search } from '@/types/Search'
+import { warning } from '@/utils/Message'
+import i18n from '@/locales'
 
+const { t } = i18n.global
+
+const selectSearch = ref<Search>()
 const list = ref<SearchCategoryShow[]>([])
+const searchInput = ref<string>('')
 
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+  const [categoryId, searchId] = keyPath[1].split('-').map(Number)
+
+  const category = list.value.find((searchCategory) => searchCategory.id === categoryId)
+  if (category) {
+    const search = category.search.find((search) => search.id === searchId)
+    if (search) {
+      selectSearch.value = search
+    }
+  }
 }
 
 const handleOpen = async (key: string) => {
@@ -22,6 +37,20 @@ const handleOpen = async (key: string) => {
 
 const handleSearchCategoryList = async () => {
   list.value = searchCategoryToSearchCategoryShowArray(await getSearchCategory())
+}
+
+const handleSearchButton = () => {
+  if (searchInput.value.length === 0) {
+    warning(t("home.empty_content"))
+    return
+  }
+
+  if (selectSearch.value === undefined){
+    warning(t("home.not_selected"))
+    return
+  }
+
+  window.open(`${selectSearch.value?.url}${searchInput.value}`)
 }
 
 handleSearchCategoryList()
@@ -46,10 +75,14 @@ handleSearchCategoryList()
         </el-menu-item>
       </el-sub-menu>
     </el-menu>
-
     <el-card class="search-body" body-class="search-card-body">
-      <input type="text" class="search-input" />
-      <el-button circle :icon="Search" />
+      <input
+        type="text"
+        class="search-input"
+        :placeholder="selectSearch?.name"
+        v-model="searchInput"
+      />
+      <el-button circle :icon="SearchIcon" @click="handleSearchButton" />
     </el-card>
   </div>
 </template>

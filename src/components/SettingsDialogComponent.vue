@@ -22,7 +22,6 @@ const open = async () => {
 }
 
 const handleSelectLanguage = (l: any) => {
-  console.log(l)
   localStorage.setItem('language', l)
   i18n.global.locale = l
 }

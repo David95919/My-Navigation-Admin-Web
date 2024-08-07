@@ -132,6 +132,8 @@ export default {
   home: {
     weather_is_not_enabled: 'Weather is not enabled',
     weather_services: 'Weather services are powered by QWeather',
-    no_website: 'No website'
+    no_website: 'No website',
+    empty_content: 'Empty content',
+    not_selected: 'Not selected'
   }
 }

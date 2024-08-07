@@ -133,6 +133,8 @@ export default {
   home: {
     weather_is_not_enabled: '未开启天气',
     weather_services: '天气服务由和风天气驱动',
-    no_website: '没有网站'
+    no_website: '没有网站',
+    empty_content: '空内容',
+    not_selected: '未选择'
   }
 }

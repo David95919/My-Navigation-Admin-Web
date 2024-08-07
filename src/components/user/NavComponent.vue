@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { TabsPaneContext } from 'element-plus'
 import { getCategory } from '@/service/user/CategoryService'
 import type { Category } from '@/types/Category'
 import NavListComponent from '@/components/user/NavListComponent.vue'
 
 const activeName = ref('first')
 const categoryList = ref<Category[]>()
-
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event)
-}
 
 const getCategoryList = async () => {
   categoryList.value = await getCategory()
@@ -21,7 +16,7 @@ getCategoryList()
 </script>
 <template>
   <el-card>
-    <el-tabs v-model="activeName" @tab-click="handleClick" stretch>
+    <el-tabs v-model="activeName" stretch>
       <el-tab-pane
         v-for="category in categoryList"
         :label="category.name"
