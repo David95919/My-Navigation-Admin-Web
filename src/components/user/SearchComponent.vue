@@ -1,31 +1,44 @@
 <script setup lang="ts">
 import { Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import type { SearchCategoryShow } from '@/types/SearchCategory'
+import { getSearchCategory } from '@/service/user/SearchCategoryService'
+import { searchCategoryToSearchCategoryShowArray } from '@/utils/Convert'
+import { getSearch } from '@/service/user/SearchService'
 
-const mockData = ref([
-  { id: 1, name: '搜索' },
-  { id: 2, name: '工具' },
-  { id: 3, name: '社交' }
-])
-
-const mockDataList = ref([
-  { id: 1, name: 'GoogleSearch', url: 'https://www.google.com/search?q=' },
-  { id: 2, name: 'BingSearch', url: 'https://www.bing.com/search?q=' },
-  { id: 3, name: 'SearChenCryptSearch', url: 'https://www.searchencrypt.com/search/?q=' },
-  { id: 4, name: 'DuckDuckSearch', url: 'https://duckduckgo.com/?q=' }
-])
+const list = ref<SearchCategoryShow[]>([])
 
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
+
+const handleOpen = async (key: string) => {
+  for (const item of list.value) {
+    if (item.id === Number(key) && item.search.length === 0) {
+      item.search = await getSearch({ searchCategoryId: Number(key) })
+    }
+  }
+}
+
+const handleSearchCategoryList = async () => {
+  list.value = searchCategoryToSearchCategoryShowArray(await getSearchCategory())
+}
+
+handleSearchCategoryList()
 </script>
 <template>
   <div class="search">
-    <el-menu mode="horizontal" @select="handleSelect" :ellipsis="false" class="search-select">
-      <el-sub-menu v-for="category in mockData" :key="category.id" :index="`${category.id}`">
+    <el-menu
+      mode="horizontal"
+      @select="handleSelect"
+      @open="handleOpen"
+      :ellipsis="false"
+      class="search-select"
+    >
+      <el-sub-menu v-for="category in list" :key="category.id" :index="`${category.id}`">
         <template #title>{{ category.name }}</template>
         <el-menu-item
-          v-for="search in mockDataList"
+          v-for="search in category.search"
           :key="search.id"
           :index="`${category.id}-${search.id}`"
         >
@@ -33,6 +46,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
         </el-menu-item>
       </el-sub-menu>
     </el-menu>
+
     <el-card class="search-body" body-class="search-card-body">
       <input type="text" class="search-input" />
       <el-button circle :icon="Search" />

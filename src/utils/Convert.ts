@@ -1,4 +1,5 @@
 import type { Nav, NavDTO } from '@/types/Nav'
+import type { SearchCategory, SearchCategoryShow } from '@/types/SearchCategory'
 
 export function navToNavDTO(data: Nav): NavDTO {
   const tags: number[] = []
@@ -17,4 +18,18 @@ export function navToNavDTO(data: Nav): NavDTO {
   }
 
   return navDTO
+}
+
+// 转换函数
+function searchCategoryToSearchCategoryShow(category: SearchCategory): SearchCategoryShow {
+  return {
+    id: category.id,
+    name: category.name,
+    search: [] // 这里将 search 设置为空数组
+  }
+}
+
+// 转换数组的函数
+export function searchCategoryToSearchCategoryShowArray(categories: SearchCategory[]): SearchCategoryShow[] {
+  return categories.map(searchCategoryToSearchCategoryShow)
 }
