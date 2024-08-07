@@ -11,9 +11,9 @@ export type SearchDTO = {
   id: number
   name: string
   url: string
-  categoryId: number
+  categoryId: number | null
 }
 
-export type SearchQueryConfig ={
+export type SearchQueryConfig = {
   searchCategoryId: number | null
 }

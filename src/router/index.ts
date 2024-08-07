@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/userStore'
 import { warning } from '@/utils/Message'
 import i18n from '@/locales'
@@ -26,6 +25,7 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'admin',
+      redirect: '/admin/home',
       component: () => import('@/views/admin/ManageContainer.vue'),
       children: [
         {
@@ -52,6 +52,16 @@ const router = createRouter({
           path: '/admin/user',
           name: 'adminUser',
           component: () => import('@/views/admin/nav/UserViews.vue')
+        },
+        {
+          path: '/admin/search',
+          name: 'adminSearch',
+          component: () => import('@/views/admin/search/SearchViews.vue')
+        },
+        {
+          path: '/admin/searchCategory',
+          name: 'adminSearchCategory',
+          component: () => import('@/views/admin/search/SearchCategoryViews.vue')
         }
       ]
     }

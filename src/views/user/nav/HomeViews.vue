@@ -2,7 +2,7 @@
 import TimeDateCardComponent from '@/components/user/TimeDateCardComponent.vue'
 import SearchComponent from '@/components/user/SearchComponent.vue'
 import NavComponent from '@/components/user/NavComponent.vue'
-import SettingsDialogComponent from '@/components/admin/SettingsDialogComponent.vue'
+import SettingsDialogComponent from '@/components/SettingsDialogComponent.vue'
 import { ref } from 'vue'
 
 const settingsDialog = ref<InstanceType<typeof SettingsDialogComponent> | null>(null)

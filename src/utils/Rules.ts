@@ -60,3 +60,37 @@ export const UserFormRule = reactive<FormRules<UserFormRuleImpl>>({
     { min: 6, max: 24, message: t('rules.user.password.length'), trigger: 'blur' }
   ]
 })
+
+export interface SearchCategoryFormRuleImpl {
+  name: string
+}
+
+export const SearchCategoryFormRule = reactive<FormRules<SearchCategoryFormRuleImpl>>({
+  name: [
+    { required: true, message: t('rules.commons.name.required'), trigger: 'blur' },
+    { min: 2, max: 24, message: t('rules.searchCategory.name.length'), trigger: 'blur' }
+  ]
+})
+
+export interface SearchFormRuleImpl {
+  name: string
+  url: string
+  categoryId: number
+}
+
+export const SearchFormRule = reactive<FormRules<SearchFormRuleImpl>>({
+  name: [
+    { required: true, message: t('rules.commons.name.required'), trigger: 'blur' },
+    { min: 2, max: 24, message: t('rules.search.name.length'), trigger: 'blur' }
+  ],
+  url: [
+    { required: true, message: t('rules.search.url.required'), trigger: 'blur' },
+    {
+      pattern: /^(http|https):\/\/.*$/,
+      message: t('rules.search.url.is_url'),
+      trigger: 'blur'
+    },
+    { min: 9, max: 120, message: t('rules.search.url.length'), trigger: 'blur' }
+  ],
+  categoryId: [{ required: true, message: t('rules.commons.select.required'), trigger: 'blur' }]
+})

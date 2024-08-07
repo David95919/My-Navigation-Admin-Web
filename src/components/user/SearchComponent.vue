@@ -11,7 +11,7 @@ const mockData = ref([
 const mockDataList = ref([
   { id: 1, name: 'GoogleSearch', url: 'https://www.google.com/search?q=' },
   { id: 2, name: 'BingSearch', url: 'https://www.bing.com/search?q=' },
-  { id: 3, name: 'SearchencryptSearch', url: 'https://www.searchencrypt.com/search/?q=' },
+  { id: 3, name: 'SearChenCryptSearch', url: 'https://www.searchencrypt.com/search/?q=' },
   { id: 4, name: 'DuckDuckSearch', url: 'https://duckduckgo.com/?q=' }
 ])
 

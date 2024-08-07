@@ -18,7 +18,9 @@ export default {
     category: '分类',
     tag: '标签',
     user: '用户',
-    settings: '设置'
+    settings: '设置',
+    search: '搜索',
+    searchCategory: '搜索分类'
   },
   other: {
     name: '名字',
@@ -49,6 +51,13 @@ export default {
   nav: {
     url: '网址',
     description: '描述'
+  },
+  searchCategory: {
+    add_prompt: '添加搜索分类'
+  },
+  search: {
+    url: '网址',
+    searchCategory: '搜索分类'
   },
   settings: {
     dark: '黑暗模式',
@@ -98,6 +107,21 @@ export default {
       password: {
         required: '请输入密码',
         length: '长度应为 6 至 24'
+      }
+    },
+    searchCategory: {
+      name: {
+        length: '长度应为 2 至 24'
+      }
+    },
+    search: {
+      name: {
+        length: '长度应为 2 至 24'
+      },
+      url: {
+        required: '请输入网址',
+        length: '长度应为 9 至 120',
+        is_url: '请输入正确的网址'
       }
     }
   },

@@ -18,7 +18,8 @@ export default {
     category: 'Category',
     tag: 'Tag',
     user: 'User',
-    settings: 'Settings'
+    settings: 'Settings',
+    search: 'Search'
   },
   other: {
     name: 'Name',
@@ -49,6 +50,13 @@ export default {
   nav: {
     url: 'Url',
     description: 'Description'
+  },
+  searchCategory: {
+    add_prompt: 'Add an search category'
+  },
+  search: {
+    url: 'Url',
+    searchCategory: 'SearchCategory'
   },
   settings: {
     dark: 'Dark Mod',
@@ -98,6 +106,21 @@ export default {
       password: {
         required: 'Please enter the Password',
         length: 'Length should be 6 to 24'
+      }
+    },
+    searchCategory: {
+      name: {
+        length: 'Length should be 2 to 24'
+      },
+    },
+    search: {
+      name: {
+        length: 'Length should be 2 to 24'
+      },
+      url: {
+        required: 'Please enter the URL',
+        length: 'Length should be 9 to 120',
+        is_url: 'Please enter the correct URL'
       }
     }
   },

@@ -75,7 +75,7 @@ defineExpose({
               <el-link href="https://github.com/David95919" target="_blank">David95919</el-link>
             </p>
             <el-link href="https://github.com/David95919/My-Navigation-Admin" target="_blank"
-            >My-Navigation-Admin
+              >My-Navigation-Admin
             </el-link>
             <el-link href="https://github.com/David95919/My-Navigation-Admin-Web" target="_blank">
               My-Navigation-Admin-Web
