@@ -36,7 +36,8 @@ export default {
     confirm_delete: '确认删除?',
     warning: '警告',
     select: '选择',
-    other: '其他'
+    other: '其他',
+    all: "全部"
   },
   user: {
     username: '用户名',

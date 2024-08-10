@@ -11,14 +11,12 @@ const navList = ref<ResultPage<Nav[]>>({ code: 0, msg: '', total: 0, records: []
 const iconUrl =
   'https://t3.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=128&url='
 
-watch(
-  () => props.categoryId,
-  () => {
-    getNavList()
-  }
-)
-
 const getNavList = async () => {
+  if (props.categoryId === 0) {
+    navList.value = await getNav({ current: 1, size: 100 })
+    return
+  }
+
   navList.value = await getNav({ current: 1, size: 100, category: props.categoryId })
 }
 

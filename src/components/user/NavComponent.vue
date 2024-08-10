@@ -3,12 +3,20 @@ import { ref } from 'vue'
 import { getCategory } from '@/service/user/CategoryService'
 import type { Category } from '@/types/Category'
 import NavListComponent from '@/components/user/NavListComponent.vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const activeName = ref('first')
 const categoryList = ref<Category[]>()
 
 const getCategoryList = async () => {
+  //获取分类
   categoryList.value = await getCategory()
+
+  //添加显示全部网站
+  categoryList.value?.unshift({ id: 0, name: t('other.all') })
+
+  //默认选择
   if (categoryList.value?.length >= 1) activeName.value = categoryList.value[0].name
 }
 

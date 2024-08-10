@@ -35,7 +35,8 @@ export default {
     confirm_delete: 'Confirm delete?',
     warning: 'warning',
     select: 'Select',
-    other: 'Other'
+    other: 'Other',
+    all: "All"
   },
   user: {
     username: 'Username',

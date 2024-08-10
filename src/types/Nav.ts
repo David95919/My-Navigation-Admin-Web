@@ -10,7 +10,7 @@ export type NavQueryConfig = {
 }
 
 export type NavUserQueryConfig = {
-  category: number
+  category?: number
   current: number
   size: number
 }
