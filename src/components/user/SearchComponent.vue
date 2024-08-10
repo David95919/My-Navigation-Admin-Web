@@ -41,12 +41,12 @@ const handleSearchCategoryList = async () => {
 
 const handleSearchButton = () => {
   if (searchInput.value.length === 0) {
-    warning(t("home.empty_content"))
+    warning(t('home.empty_content'))
     return
   }
 
-  if (selectSearch.value === undefined){
-    warning(t("home.not_selected"))
+  if (selectSearch.value === undefined) {
+    warning(t('home.not_selected'))
     return
   }
 

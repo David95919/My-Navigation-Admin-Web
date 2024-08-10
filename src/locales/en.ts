@@ -111,7 +111,7 @@ export default {
     searchCategory: {
       name: {
         length: 'Length should be 2 to 24'
-      },
+      }
     },
     search: {
       name: {

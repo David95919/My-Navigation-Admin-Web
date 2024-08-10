@@ -30,6 +30,8 @@ function searchCategoryToSearchCategoryShow(category: SearchCategory): SearchCat
 }
 
 // 转换数组的函数
-export function searchCategoryToSearchCategoryShowArray(categories: SearchCategory[]): SearchCategoryShow[] {
+export function searchCategoryToSearchCategoryShowArray(
+  categories: SearchCategory[]
+): SearchCategoryShow[] {
   return categories.map(searchCategoryToSearchCategoryShow)
 }
